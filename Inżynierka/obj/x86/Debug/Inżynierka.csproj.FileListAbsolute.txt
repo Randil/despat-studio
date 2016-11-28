@@ -1,0 +1,10 @@
+C:\Users\user\Desktop\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\OpenTK.dll.config
+C:\Users\user\Desktop\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Inżynierka.exe
+C:\Users\user\Desktop\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Inżynierka.pdb
+C:\Users\user\Desktop\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll
+C:\Users\user\Desktop\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\NVorbis.dll
+C:\Users\user\Desktop\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\OpenTK.dll
+C:\Users\user\Desktop\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.exe
+C:\Users\user\Desktop\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.pdb
+C:\Users\user\Desktop\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Graphics\player.xnb
