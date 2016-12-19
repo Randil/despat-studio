@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/user/Desktop/Inżynierka/Inżynierka/Content/Graphics/player.png</File>
+    <File>C:/Inżynierka/Inżynierka/Content/Graphics/player.png</File>
+    <File>C:/Inżynierka/Inżynierka/Content/Graphics/enemy.png</File>
   </SourceFiles>
 </SourceFileCollection>

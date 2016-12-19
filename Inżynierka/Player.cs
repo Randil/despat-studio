@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Inżynierka
+namespace DespatShooter
 {
-    class Player
+    class Player : IAnimatedObject
     {
         public Texture2D PlayerTexture;
         public Vector2 Position;
@@ -35,7 +35,7 @@ namespace Inżynierka
 
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
         }

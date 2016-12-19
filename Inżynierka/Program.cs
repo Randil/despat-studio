@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Inżynierka
+namespace DespatShooter
 {
     /// <summary>
     /// The main class.

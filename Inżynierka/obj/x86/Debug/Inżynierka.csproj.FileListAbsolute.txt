@@ -8,3 +8,14 @@ C:\Users\user\Desktop\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.csprojRe
 C:\Users\user\Desktop\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.exe
 C:\Users\user\Desktop\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.pdb
 C:\Users\user\Desktop\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Graphics\player.xnb
+C:\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.exe
+C:\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.pdb
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Graphics\enemy.xnb
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Graphics\player.xnb
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\OpenTK.dll.config
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Inżynierka.exe
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Inżynierka.pdb
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\NVorbis.dll
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\OpenTK.dll
+C:\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.csprojResolveAssemblyReference.cache
