@@ -39,14 +39,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Button.cs" />
-    <Compile Include="IAnimatedObject.cs" />
+    <Compile Include="ButtonMission.cs" />
     <Compile Include="Enemy.cs" />
-    <Compile Include="MainMenu.cs" />
+    <Compile Include="MenuMain.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Mission.cs" />
+    <Compile Include="MissionParser.cs" />
+    <Compile Include="MenuMissions.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextureSheet.cs" />
+    <Compile Include="TextureSheetElement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -64,6 +69,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
     <Content Include="Content\Graphics\player.png" />
+    <Content Include="greySheet.xml" />
     <Content Include="OpenTK.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

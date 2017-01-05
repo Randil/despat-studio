@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
+using System.Xml;
 
 
 namespace DespatShooter
@@ -18,18 +19,22 @@ namespace DespatShooter
         GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
 
-        KeyboardState currentKeyboardState;
-        KeyboardState previousKeyboardState;
-        MouseState currentMouseState;
-        MouseState previousMouseState;
 
-        enum GameState
+        public XmlDocument buttonTexturesXML = new XmlDocument();
+        public TextureSheet buttonTextures;
+
+
+        public KeyboardState currentKeyboardState;
+        public KeyboardState previousKeyboardState;
+
+        public enum GameState
         {
-            MainMenu, Mission, Achievements, MissionChoice,
+            MainMenu, Mission, Achievements, MissionChoice, Tutorial
         }
-        GameState currentGameState = GameState.MainMenu;
+        public GameState currentGameState = GameState.MainMenu;
 
-        MainMenu menu;
+        MenuMain menu;
+        MenuMissions missionsMenu;
 
         private Game1()
         {
@@ -51,8 +56,15 @@ namespace DespatShooter
 
         protected override void Initialize()
         {
-            menu = new MainMenu(this);
+            buttonTexturesXML.Load("..\\..\\..\\..\\greySheet.xml");
+            buttonTextures = new TextureSheet(buttonTexturesXML);
+            menu = new MenuMain(this);
             menu.Initialize();
+
+            missionsMenu = new MenuMissions(this);
+            missionsMenu.Initialize();
+            
+
             LoadContent();
 
         }
@@ -84,8 +96,16 @@ namespace DespatShooter
             switch (currentGameState)
             {
                 case GameState.MainMenu:
-                    menu.Update(gameTime);
-                    break;
+                    {
+                        menu.Update(gameTime);
+                        break;
+                    }
+                case GameState.MissionChoice:
+                    {
+                        missionsMenu.Update(gameTime);
+                        break;
+                    }
+                default : Exit(); break;
             }
 
             base.Update(gameTime);
@@ -103,8 +123,15 @@ namespace DespatShooter
             switch(currentGameState)
             {
                 case GameState.MainMenu:
-                    menu.Draw(gameTime);
-                    break;
+                    {
+                        menu.Draw(gameTime);
+                        break;
+                    }
+                case GameState.MissionChoice:
+                    {
+                        missionsMenu.Draw(gameTime);
+                        break;
+                    }
             }
         
             spriteBatch.End();

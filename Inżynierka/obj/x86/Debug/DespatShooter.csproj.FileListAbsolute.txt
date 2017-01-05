@@ -10,3 +10,4 @@ C:\Inżynierka\Inżynierka\obj\x86\Debug\DespatShooter.csprojResolveAssemblyRefe
 C:\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.exe
 C:\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.pdb
 C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Fonts\MainMenu.xnb
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Graphics\greySheet.xnb

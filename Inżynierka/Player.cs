@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DespatShooter
 {
-    class Player : IAnimatedObject
+    class Player 
     {
         public Texture2D PlayerTexture;
         public Vector2 Position;
