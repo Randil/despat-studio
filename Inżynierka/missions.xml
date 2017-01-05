@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <brick type="basic" x="50" y="50" />
+  <brick type="basic" x="150" y="150" />
+</root>
+

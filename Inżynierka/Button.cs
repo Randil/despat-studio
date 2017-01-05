@@ -17,7 +17,7 @@ namespace DespatShooter
         private String textureName;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
-        Game1.GameState clickDestination;
+        public Game1.GameState clickDestination;
         private Game game;
         public bool isHoovered;
         SpriteBatch spriteBatch;
@@ -79,7 +79,7 @@ namespace DespatShooter
             base.Draw(gameTime);
         }
 
-        public void Click()
+        public virtual void Click()
         {
             Game1.Instance.currentGameState = clickDestination;
         }

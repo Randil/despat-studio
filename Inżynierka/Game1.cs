@@ -35,6 +35,8 @@ namespace DespatShooter
 
         MenuMain menu;
         MenuMissions missionsMenu;
+        public MissionParser missionParser;
+        public MissionScreen activeMission;
 
         private Game1()
         {
@@ -63,6 +65,9 @@ namespace DespatShooter
 
             missionsMenu = new MenuMissions(this);
             missionsMenu.Initialize();
+
+            missionParser = new MissionParser(this);
+            activeMission = new MissionScreen(this);
             
 
             LoadContent();
@@ -105,6 +110,11 @@ namespace DespatShooter
                         missionsMenu.Update(gameTime);
                         break;
                     }
+                case GameState.Mission:
+                    {
+                        activeMission.Update(gameTime);
+                        break;
+                    }
                 default : Exit(); break;
             }
 
@@ -130,6 +140,11 @@ namespace DespatShooter
                 case GameState.MissionChoice:
                     {
                         missionsMenu.Draw(gameTime);
+                        break;
+                    }
+                case GameState.Mission:
+                    {
+                        activeMission.Draw(gameTime);
                         break;
                     }
             }

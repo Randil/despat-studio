@@ -38,12 +38,14 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Brick.cs" />
+    <Compile Include="BrickWall.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="ButtonMission.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="MenuMain.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="Mission.cs" />
+    <Compile Include="MissionScreen.cs" />
     <Compile Include="MissionParser.cs" />
     <Compile Include="MenuMissions.cs" />
     <Compile Include="Player.cs" />
@@ -67,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="missions.xml" />
     <EmbeddedResource Include="Icon.ico" />
     <Content Include="Content\Graphics\player.png" />
     <Content Include="greySheet.xml" />
