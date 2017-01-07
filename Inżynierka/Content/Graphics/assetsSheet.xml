@@ -1,0 +1,20 @@
+<root>
+	<TextureAtlas imagePath="assets">
+		<SubTexture name="brick_yellow.png" x="5" y="70" width="67" height="27"/>
+    <SubTexture name="brick_red.png" x="83" y="70" width="67" height="27"/>
+    <SubTexture name="brick_green.png" x="165" y="70" width="67" height="27"/>
+    <SubTexture name="brick_blue.png" x="243" y="70" width="67" height="27"/>
+    <SubTexture name="brick_gold.png" x="243" y="277" width="67" height="27"/>
+    <SubTexture name="bonus_smallPaddle.png" x="5" y="115" width="71" height="63"/>
+    <SubTexture name="bonus_powerBalls.png" x="83" y="115" width="71" height="63"/>
+    <SubTexture name="bonus_multiBalls.png" x="163" y="115" width="71" height="63"/>
+    <SubTexture name="bonus_bigPaddle.png" x="241" y="115" width="71" height="63"/>
+    <SubTexture name="paddle_small.png" x="25" y="190" width="71" height="23"/>
+    <SubTexture name="paddle_medium.png" x="25" y="220" width="139" height="23"/>
+    <SubTexture name="paddle_big.png" x="25" y="252" width="204" height="23"/>
+    <SubTexture name="ball_normal.png" x="285" y="202" width="15" height="15"/>
+    <SubTexture name="ball_big.png" x="269" y="232" width="30" height="30"/>
+    <SubTexture name="ball_fire.png" x="260" y="202" width="8" height="17"/>
+
+	</TextureAtlas>
+</root>

@@ -22,7 +22,8 @@ namespace DespatShooter
 
         public XmlDocument buttonTexturesXML = new XmlDocument();
         public TextureSheet buttonTextures;
-
+        public XmlDocument gameTexturesXML = new XmlDocument();
+        public TextureSheet gameTextures;
 
         public KeyboardState currentKeyboardState;
         public KeyboardState previousKeyboardState;
@@ -37,6 +38,7 @@ namespace DespatShooter
         MenuMissions missionsMenu;
         public MissionParser missionParser;
         public MissionScreen activeMission;
+        public XmlDocument missionsXML = new XmlDocument();
 
         private Game1()
         {
@@ -58,13 +60,16 @@ namespace DespatShooter
 
         protected override void Initialize()
         {
-            buttonTexturesXML.Load("..\\..\\..\\..\\greySheet.xml");
+            buttonTexturesXML.Load("..\\..\\..\\..\\Content\\Graphics\\greySheet.xml");
             buttonTextures = new TextureSheet(buttonTexturesXML);
+            gameTexturesXML.Load("..\\..\\..\\..\\Content\\Graphics\\assetsSheet.xml");
+            gameTextures = new TextureSheet(gameTexturesXML);
             menu = new MenuMain(this);
             menu.Initialize();
 
+            missionsXML.Load("..\\..\\..\\..\\Content\\Levels\\missions.xml");
             missionsMenu = new MenuMissions(this);
-            missionsMenu.Initialize();
+            missionsMenu.Initialize(missionsXML);
 
             missionParser = new MissionParser(this);
             activeMission = new MissionScreen(this);
@@ -124,7 +129,7 @@ namespace DespatShooter
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
 

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <brick texture="brick_yellow.png" x="50" y="70" />
+  <brick texture="brick_red.png" x="120" y="70" />
+  <brick texture="brick_green.png" x="190" y="70" />
+  <brick texture="brick_blue.png" x="260" y="70" />
+  <brick texture="brick_yellow.png" x="50" y="100" />
+  <brick texture="brick_red.png" x="120" y="100" />
+  <brick texture="brick_green.png" x="190" y="100" />
+  <brick texture="brick_blue.png" x="260" y="100" />
+
+  
+</root>
+

@@ -11,7 +11,9 @@ namespace DespatShooter
     public class Brick : Microsoft.Xna.Framework.DrawableGameComponent
     {
         int x, y;
-        Texture2D texture;
+        private Rectangle sourceRectangle;
+        private Rectangle destinationRectangle;
+        string textureName;
         Game1 game;
         SpriteBatch spriteBatch;
 
@@ -25,13 +27,16 @@ namespace DespatShooter
             base.LoadContent();
         }
 
-        public void Initialize(Texture2D texture, int x, int y)
+           public void Initialize(String textureName, int x, int y)
         {
 
             LoadContent();
-            this.texture = texture;
             this.x = x;
             this.y = y;
+            this.textureName = textureName;
+
+            sourceRectangle = Game1.Instance.gameTextures.getTextureRectangle(textureName);
+            destinationRectangle = new Rectangle(x, y, sourceRectangle.Width, sourceRectangle.Height);
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
             base.Initialize();
         }
@@ -44,7 +49,10 @@ namespace DespatShooter
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(texture, new Vector2(x, y), Color.White);
+            spriteBatch.Draw(Game1.Instance.gameTextures.textureSheet,
+                destinationRectangle,
+                sourceRectangle,
+                Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }

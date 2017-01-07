@@ -10,22 +10,23 @@ namespace DespatShooter
 {
     class Button : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        private SpriteFont buttonFont;
-        private int X;
-        private int Y;
-        private String buttonText;
-        private String textureName;
-        private Rectangle sourceRectangle;
-        private Rectangle destinationRectangle;
+        public SpriteFont buttonFont;
+        public int x;
+        public int y;
+        public String buttonText;
+        public String textureName;
+        public Rectangle sourceRectangle;
+        public Rectangle destinationRectangle;
         public Game1.GameState clickDestination;
         private Game game;
         public bool isHoovered;
-        SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
 
-        public Button(Game1 game)
+        public Button(Game1 game, Game1.GameState clickDestination)
             : base(game)
         {
             this.game = game;
+            this.clickDestination = clickDestination;
         }
 
         protected override void LoadContent()
@@ -33,22 +34,21 @@ namespace DespatShooter
             base.LoadContent();
         }
 
-        public void Initialize(SpriteFont font, int X, int Y, String text, String texture, Game1.GameState clickDestination)
+        public void Initialize(SpriteFont font, int x, int y, String text, String textureName)
         {
 
             LoadContent();
 
             buttonFont = font;
-            this.X = X;
-            this.Y = Y;
+            this.x = x;
+            this.y = y;
             buttonText = text;
-            textureName = texture;
+            this.textureName = textureName;
             isHoovered = false;
 
             sourceRectangle = Game1.Instance.buttonTextures.getTextureRectangle(textureName);
-            destinationRectangle = new Rectangle(X, Y, sourceRectangle.Width, sourceRectangle.Height);
+            destinationRectangle = new Rectangle(x, y, sourceRectangle.Width, sourceRectangle.Height);
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
-            this.clickDestination = clickDestination;
 
             base.Initialize();
         }

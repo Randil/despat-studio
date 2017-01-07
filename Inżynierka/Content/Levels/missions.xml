@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <level file="level1.xml" name="Journey begins" bestTime="99999"/>
+  <level file="level2.xml" name="Adventure time" bestTime="99999"/>
+
+</root>
+

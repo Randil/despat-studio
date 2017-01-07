@@ -4,46 +4,50 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DespatShooter
 {
-    class Player 
+    class Player : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        public Texture2D PlayerTexture;
-        public Vector2 Position;
-        public bool Active;
-        public int Health;
-        public int Width
+        private Game game;
+        SpriteBatch spriteBatch;
+        public String texture;
+        public float x, y;
+        public float movementSpeed = 8.0f;
+        public Rectangle sourceRectangle;
+        public Rectangle destinationRectangle;
+        public PlayerSteering steering;
 
+        public Player(Game1 game) : base(game)
         {
-            get { return PlayerTexture.Width; }
+            this.game = game;
         }
 
-        public int Height
+        public void Initialize(String texture, float x, float y)
         {
-            get { return PlayerTexture.Height; }
+            spriteBatch = new SpriteBatch(game.GraphicsDevice);
+            this.texture = texture;
+            this.x = x;
+            this.y = y;
+            this.sourceRectangle = Game1.Instance.gameTextures.getTextureRectangle(texture);
+            this.destinationRectangle = new Rectangle((int) x, (int) y, sourceRectangle.Width, sourceRectangle.Height);
+            steering = new PlayerSteering(this);
         }
 
-
-        public void Initialize(Texture2D texture, Vector2 position)
+        public override void Update(GameTime gameTime)
         {
-
-            PlayerTexture = texture;
-            // Set the starting position of the player around the middle of the screen and to the back
-            Position = position;
-            // Set the player to be active
-            Active = true;
-            // Set the player health
-            Health = 100;
-
+            destinationRectangle.X = (int) x;
+            destinationRectangle.Y = (int) y;
+            steering.Update(gameTime);
         }
 
-        public void Update(GameTime gameTime)
+        public override void Draw(GameTime gameTime)
         {
+              spriteBatch.Begin();
 
-        }
+              spriteBatch.Draw(Game1.Instance.gameTextures.textureSheet,
+              destinationRectangle,
+              sourceRectangle,
+              Color.White);
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(PlayerTexture, Position, null, Color.White, 0f, Vector2.Zero, 1f,
-            SpriteEffects.None, 0f);
+              spriteBatch.End();
         }
 
     }

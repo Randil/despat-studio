@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <brick texture="brick_yellow.png" x="5" y="70" />
+  <brick texture="brick_red.png" x="83" y="70" />
+  <brick texture="brick_green.png" x="165" y="70" />
+  <brick texture="brick_blue.png" x="243" y="70" />
+  <brick texture="brick_gold.png" x="243" y="277" />
+  <brick texture="bonus_smallPaddle.png" x="5" y="115" />
+  <brick texture="bonus_powerBalls.png" x="83" y="115" />
+  <brick texture="bonus_multiBalls.png" x="163" y="115" />
+  <brick texture="bonus_bigPaddle.png" x="241" y="115" />
+  <brick texture="paddle_small.png" x="25" y="190" />
+  <brick texture="paddle_medium.png" x="25" y="220" />
+  <brick texture="paddle_big.png" x="25" y="252" />
+  <brick texture="ball_normal.png" x="285" y="202" />
+  <brick texture="ball_big.png" x="269" y="232" />
+  <brick texture="ball_fire.png" x="260" y="202" />
+  
+</root>
+

@@ -13,7 +13,7 @@ namespace DespatShooter
     {
         private Game game;
         SpriteBatch spriteBatch;
-        public XmlDocument missionsXML = new XmlDocument();
+        public XmlDocument missionsXML;
      
 
         public MenuMissions(Game1 game) : base(game)
@@ -23,19 +23,31 @@ namespace DespatShooter
 
         protected override void LoadContent()
         {
-            missionsXML.Load("..\\..\\..\\..\\missions.xml");
             base.LoadContent();
         }
 
-        public override void Initialize()
+        public void Initialize(XmlDocument missionsXML)
         {
             LoadContent();
-            buttons.Add(new ButtonMission(Game1.Instance, missionsXML));
-            buttons[0].Initialize(menuFont, 150, 150, "MISSION1", "grey_button15.png", Game1.GameState.Mission);
-            buttons.Add(new ButtonMission(Game1.Instance, missionsXML));
-            buttons[1].Initialize(menuFont, 150, 220, "MISSION2", "grey_button15.png", Game1.GameState.MainMenu);
-            buttons.Add(new ButtonMission(Game1.Instance, missionsXML));
-            buttons[2].Initialize(menuFont, 150, 290, "MISSION3", "grey_button15.png", Game1.GameState.MainMenu);
+            this.missionsXML = missionsXML;
+            string text;
+            string filename;
+            string besttime;
+            int height = 150;
+
+            foreach (XmlNode node in missionsXML.DocumentElement.ChildNodes)
+            {
+                text = node.Attributes["name"].InnerText;
+                filename = node.Attributes["file"].InnerText;
+                besttime = node.Attributes["bestTime"].InnerText;
+                XmlDocument scenarioXML = new XmlDocument();
+                scenarioXML.Load("..\\..\\..\\..\\Content\\Levels\\" + filename);
+                ButtonMission button = new ButtonMission(Game1.Instance, Game1.GameState.Mission, scenarioXML);
+                button.Initialize(menuFont, 150, height, text, "grey_button15.png");
+                height += 70;
+                buttons.Add(button);
+            }
+
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
             activeButton = buttons[activeButtonIndex];
             activeButton.isHoovered = true;

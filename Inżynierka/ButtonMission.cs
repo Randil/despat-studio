@@ -14,12 +14,14 @@ namespace DespatShooter
         private Game game;
         XmlDocument missionScenario;
 
-        public ButtonMission(Game1 game, XmlDocument missionScenario)
-            : base(game)
+        public ButtonMission(Game1 game, Game1.GameState clickDestination, XmlDocument missionScenario)
+            : base(game, clickDestination)
         {
-            this.missionScenario = missionScenario;
             this.game = game;
+            this.clickDestination = clickDestination;
+            this.missionScenario = missionScenario;
         }
+
 
         public override void Click()
         {

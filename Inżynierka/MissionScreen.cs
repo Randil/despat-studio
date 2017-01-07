@@ -29,6 +29,11 @@ namespace DespatShooter
         {
 
             LoadContent();
+            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+            player = new Player(Game1.Instance);
+            player.Initialize("paddle_medium.png", 400, 400);
+               // Game1.Instance.GraphicsDevice.Viewport.TitleSafeArea.X + GraphicsDevice.Viewport.TitleSafeArea.Width / 2,
+              //  GraphicsDevice.Viewport.TitleSafeArea.Y - 50);
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
             base.Initialize();
         }
@@ -54,6 +59,8 @@ namespace DespatShooter
             //{
             //    activeButton.Click();
             //}
+            player.Update(gameTime);
+            bricks.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -61,7 +68,9 @@ namespace DespatShooter
         {
             spriteBatch.Begin();
 
+            player.Draw(gameTime);
             bricks.Draw(gameTime);
+
             spriteBatch.End();
 
             base.Draw(gameTime);

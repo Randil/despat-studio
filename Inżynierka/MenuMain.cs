@@ -22,12 +22,12 @@ namespace DespatShooter
         public override void Initialize()
         {
             LoadContent();
-            buttons.Add(new Button(Game1.Instance));
-            buttons[0].Initialize(menuFont, 300, 150, "NEW GAME", "grey_button15.png", Game1.GameState.MissionChoice);
-            buttons.Add(new Button(Game1.Instance));
-            buttons[1].Initialize(menuFont, 300, 220, "ACHIEVEMENTS", "grey_button15.png", Game1.GameState.Achievements);
-            buttons.Add(new Button(Game1.Instance));
-            buttons[2].Initialize(menuFont, 300, 290, "HOW TO PLAY", "grey_button15.png", Game1.GameState.Tutorial);
+            buttons.Add(new Button(Game1.Instance, Game1.GameState.MissionChoice));
+            buttons[0].Initialize(menuFont, 300, 150, "NEW GAME", "grey_button15.png");
+            buttons.Add(new Button(Game1.Instance, Game1.GameState.Achievements));
+            buttons[1].Initialize(menuFont, 300, 220, "ACHIEVEMENTS", "grey_button15.png");
+            buttons.Add(new Button(Game1.Instance, Game1.GameState.Tutorial));
+            buttons[2].Initialize(menuFont, 300, 290, "HOW TO PLAY", "grey_button15.png");
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
             activeButton = buttons[activeButtonIndex];
             activeButton.isHoovered = true;

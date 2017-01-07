@@ -12,28 +12,26 @@ namespace DespatShooter
     {
         List<Brick> wall;
         Game1 game;
-        Texture2D brickTexture;
         BrickWall bWall;
 
         public MissionParser(Game1 game)
         {
             this.game = game;
-            this.brickTexture = Game1.Instance.Content.Load<Texture2D>("Graphics\\Enemy");
             wall = new List<Brick> { };
             bWall = new BrickWall(game);
         }
 
         public void createMission(XmlDocument scenario)
         {
-            string type;
+            string texture;
             int x, y;
             foreach (XmlNode node in scenario.DocumentElement.ChildNodes)
             {
-                type = node.Attributes["type"].InnerText;
+                texture = node.Attributes["texture"].InnerText;
                 x = Int32.Parse(node.Attributes["x"].InnerText);
-                y = Int32.Parse(node.Attributes["x"].InnerText);
+                y = Int32.Parse(node.Attributes["y"].InnerText);
                 Brick brick = new Brick(game);
-                brick.Initialize(brickTexture, x, y);
+                brick.Initialize(texture, x, y);
                 wall.Add(brick);
             }
             bWall.Initialize(wall);
