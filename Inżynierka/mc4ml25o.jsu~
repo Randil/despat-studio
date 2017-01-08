@@ -8,25 +8,20 @@ using System.Threading.Tasks;
 
 namespace DespatShooter
 {
-    public class Ball : Microsoft.Xna.Framework.DrawableGameComponent
+    class Ball : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        public enum hitSide
-        {
-            top, bottom, left, right
-        }
         public float x, y;
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
         string textureName;
         Game1 game;
         SpriteBatch spriteBatch;
-        StrategyFlyBy collisionStrategy;
+        IBallCollisionStrategy collisionStrategy;
         GameTime previousGameTime;
         int delta;
 
         public float xSpeed = 0f;
-        public float ySpeed = -500f;
-        public float maxSpeed = 500f;
+        public float ySpeed = -200f;
 
           public Ball(Game1 game) : base(game)
         {
@@ -38,7 +33,7 @@ namespace DespatShooter
             base.LoadContent();
         }
 
-           public void Initialize(StrategyFlyBy strategy, String textureName, int x, int y)
+           public void Initialize(IBallCollisionStrategy strategy, String textureName, int x, int y)
         {
 
             LoadContent();
@@ -60,7 +55,6 @@ namespace DespatShooter
             if (delta < 0) delta = 1000 + delta;
 
             collisionStrategy.CheckCollisions();
-
             this.x -= (xSpeed * delta / 1000);
             this.y += (ySpeed * delta / 1000);
 

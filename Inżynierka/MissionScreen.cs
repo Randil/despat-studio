@@ -14,6 +14,7 @@ namespace DespatShooter
         SpriteBatch spriteBatch;
         Player player;
         public BrickWall bricks;
+        Ball ball;
 
         public MissionScreen(Game1 game) : base(game)
         {
@@ -29,36 +30,21 @@ namespace DespatShooter
         {
 
             LoadContent();
-            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
             player = new Player(Game1.Instance);
-            player.Initialize("paddle_medium.png", 400, 400);
-               // Game1.Instance.GraphicsDevice.Viewport.TitleSafeArea.X + GraphicsDevice.Viewport.TitleSafeArea.Width / 2,
-              //  GraphicsDevice.Viewport.TitleSafeArea.Y - 50);
+            player.Initialize("paddle_medium.png",
+                (Game1.Instance.GraphicsDevice.Viewport.Width - Game1.Instance.gameTextures.getTextureRectangle("paddle_medium.png").Width) / 2,
+                Game1.Instance.GraphicsDevice.Viewport.Height - 50);
+            ball = new Ball(Game1.Instance);
+            ball.Initialize(new StrategyFlyBy(bricks, ball, player), "ball_normal.png",
+                (Game1.Instance.GraphicsDevice.Viewport.Width - Game1.Instance.gameTextures.getTextureRectangle("ball_normal.png").Width) / 2,
+                 Game1.Instance.GraphicsDevice.Viewport.Height - 50 - Game1.Instance.gameTextures.getTextureRectangle("ball_normal.png").Height);
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
             base.Initialize();
         }
 
         public override void Update(GameTime gameTime)
         {
-            //if (Game1.Instance.currentKeyboardState.IsKeyDown(Keys.Down) && Game1.Instance.previousKeyboardState.IsKeyUp(Keys.Down))
-            //{
-            //    activeButton.isHoovered = false;
-            //    activeButtonIndex = (activeButtonIndex + 1) % buttons.Count;
-            //    activeButton = buttons[activeButtonIndex];
-            //    activeButton.isHoovered = true;
-            //}
-            //if (Game1.Instance.currentKeyboardState.IsKeyDown(Keys.Up) && Game1.Instance.previousKeyboardState.IsKeyUp(Keys.Up))
-            //{
-            //    activeButton.isHoovered = false;
-            //    activeButtonIndex = (activeButtonIndex - 1);
-            //    if (activeButtonIndex < 0) activeButtonIndex = buttons.Count - 1;
-            //    activeButton = buttons[activeButtonIndex];
-            //    activeButton.isHoovered = true;
-            //}
-            //if (Game1.Instance.currentKeyboardState.IsKeyDown(Keys.Enter) && Game1.Instance.previousKeyboardState.IsKeyUp(Keys.Enter))
-            //{
-            //    activeButton.Click();
-            //}
+            ball.Update(gameTime);
             player.Update(gameTime);
             bricks.Update(gameTime);
             base.Update(gameTime);
@@ -68,6 +54,7 @@ namespace DespatShooter
         {
             spriteBatch.Begin();
 
+            ball.Draw(gameTime);
             player.Draw(gameTime);
             bricks.Draw(gameTime);
 

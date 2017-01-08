@@ -39,12 +39,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Ball.cs" />
-    <Compile Include="BallCollision.cs" />
+    <Compile Include="StrategyFireball.cs" />
+    <Compile Include="StrategyFlyBy.cs" />
     <Compile Include="Brick.cs" />
     <Compile Include="BrickWall.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="ButtonMission.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="IBallCollisionStrategy.cs" />
     <Compile Include="MenuMain.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MissionScreen.cs" />
@@ -55,6 +57,7 @@
     <Compile Include="PlayerSteering.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StrategyNormal.cs" />
     <Compile Include="TextureSheet.cs" />
     <Compile Include="TextureSheetElement.cs" />
   </ItemGroup>

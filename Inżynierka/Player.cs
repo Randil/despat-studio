@@ -4,16 +4,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DespatShooter
 {
-    class Player : Microsoft.Xna.Framework.DrawableGameComponent
+    public class Player : Microsoft.Xna.Framework.DrawableGameComponent
     {
         private Game game;
         SpriteBatch spriteBatch;
         public String texture;
         public float x, y;
-        public float movementSpeed = 8.0f;
+        public float movementSpeed = 500.0f;
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
-        public PlayerSteering steering;
+        PlayerSteering steering;
 
         public Player(Game1 game) : base(game)
         {
