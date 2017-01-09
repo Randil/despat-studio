@@ -10,7 +10,7 @@ namespace DespatShooter
 {
     public class BrickWall : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        List<Brick> wall;
+        public List<Brick> wall;
         Game1 game;
         SpriteBatch spriteBatch;
 
@@ -50,5 +50,10 @@ namespace DespatShooter
 
             base.Draw(gameTime);
         }
+        public void removeBrick(Brick brick)
+        {
+            wall.Remove(brick);
+        }
+
     }
 }

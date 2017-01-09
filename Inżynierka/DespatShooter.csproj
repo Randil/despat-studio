@@ -79,6 +79,7 @@
     <Content Include="Content\Graphics\assets.png" />
     <Content Include="Content\Graphics\greySheet.png" />
     <Content Include="Content\Levels\level1.xml" />
+    <Content Include="Content\Levels\level3.xml" />
     <Content Include="Content\Levels\level2.xml" />
     <Content Include="Content\Levels\missions.xml" />
     <EmbeddedResource Include="Icon.ico" />

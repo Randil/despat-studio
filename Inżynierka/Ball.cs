@@ -20,7 +20,7 @@ namespace DespatShooter
         string textureName;
         Game1 game;
         SpriteBatch spriteBatch;
-        StrategyFlyBy collisionStrategy;
+        StrategyNormal collisionStrategy;
         GameTime previousGameTime;
         int delta;
 
@@ -38,7 +38,7 @@ namespace DespatShooter
             base.LoadContent();
         }
 
-           public void Initialize(StrategyFlyBy strategy, String textureName, int x, int y)
+           public void Initialize(StrategyNormal strategy, String textureName, int x, int y)
         {
 
             LoadContent();

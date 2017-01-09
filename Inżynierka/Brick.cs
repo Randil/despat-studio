@@ -12,7 +12,7 @@ namespace DespatShooter
     {
         int x, y;
         private Rectangle sourceRectangle;
-        private Rectangle destinationRectangle;
+        public Rectangle destinationRectangle;
         string textureName;
         Game1 game;
         SpriteBatch spriteBatch;

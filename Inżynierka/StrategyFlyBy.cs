@@ -22,6 +22,7 @@ namespace DespatShooter
 
        public void CheckCollisions()
         {
+
             if (ball.destinationRectangle.Intersects(player.destinationRectangle))
                 { if (justReflected == false) CalculateReflectionPaddle(); }
             else justReflected = false;
@@ -33,7 +34,7 @@ namespace DespatShooter
             if (ball.x >= Game1.Instance.GraphicsDevice.Viewport.Width - ball.sourceRectangle.Width) 
                 CalculateReflectionWall(Ball.hitSide.right);
         }
-        void CalculateReflectionBrick()
+        void CalculateReflectionBrick(Ball.hitSide hitSide)
         {
 
         }
