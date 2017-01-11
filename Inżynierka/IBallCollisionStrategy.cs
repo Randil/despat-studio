@@ -9,8 +9,8 @@ namespace DespatShooter
     public interface IBallCollisionStrategy
     {
         void CheckCollisions();
-        void CalculateReflectionBrick();
-        void CalculateReflectionWall();
+        void CalculateReflectionBrick(Ball.hitSide hitSide, Brick brick);
+        void CalculateReflectionWall(Ball.hitSide hitSide);
         void CalculateReflectionPaddle();
     }
 }

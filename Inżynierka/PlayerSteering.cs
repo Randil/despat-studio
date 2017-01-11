@@ -10,11 +10,11 @@ namespace DespatShooter
 {
     class PlayerSteering
     {
-        Player player;
+        Paddle player;
         GameTime previousGameTime;
         int delta, max;
 
-        public PlayerSteering(Player player)
+        public PlayerSteering(Paddle player)
         {
             this.player = player;
             delta = 0; max = 0;

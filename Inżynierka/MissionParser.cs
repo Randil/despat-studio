@@ -32,6 +32,8 @@ namespace DespatShooter
                 y = Int32.Parse(node.Attributes["y"].InnerText);
                 Brick brick = new Brick(game);
                 brick.Initialize(texture, x, y);
+                brick.subscribe(bWall);
+                brick.subscribe(Game1.Instance.achievements);
                 wall.Add(brick);
             }
             bWall.Initialize(wall);

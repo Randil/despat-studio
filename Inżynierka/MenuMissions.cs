@@ -21,11 +21,6 @@ namespace DespatShooter
             this.game = game;
         }
 
-        protected override void LoadContent()
-        {
-            base.LoadContent();
-        }
-
         public void Initialize(XmlDocument missionsXML)
         {
             LoadContent();

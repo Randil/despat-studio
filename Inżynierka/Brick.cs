@@ -16,10 +16,30 @@ namespace DespatShooter
         string textureName;
         Game1 game;
         SpriteBatch spriteBatch;
+        List<IBrickObserver> observers;
 
          public Brick(Game1 game) : base(game)
         {
             this.game = game;
+            observers = new List<IBrickObserver> { };
+        }
+
+        public void destroy()
+        {
+            foreach (IBrickObserver o in observers)
+                o.BrickDestroyed(this);
+
+            //TODO: Visual or sound effect?
+        }
+
+        public void subscribe(IBrickObserver observer)
+        {
+            observers.Add(observer);
+        }
+
+        public void unsubscribe(IBrickObserver observer)
+        {
+            observers.Remove(observer);
         }
 
            protected override void LoadContent()

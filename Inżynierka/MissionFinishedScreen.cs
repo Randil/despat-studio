@@ -6,17 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatShooter 
 {
-    public class BrickWall : Microsoft.Xna.Framework.DrawableGameComponent, IBrickObserver
+    class MissionFinishedScreen : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        public List<Brick> wall;
-        Game1 game;
+        private Game game;
         SpriteBatch spriteBatch;
+        double time;
 
-         public BrickWall(Game1 game) : base(game)
+        public MissionFinishedScreen(Game1 game)
+            : base(game)
         {
             this.game = game;
+            spriteBatch = new SpriteBatch(Game1.Instance.GraphicsDevice);
         }
 
            protected override void LoadContent()
@@ -24,36 +26,30 @@ namespace DespatShooter
             base.LoadContent();
         }
 
-        public void Initialize(List<Brick> wall)
+        public void Initialize(double time)
         {
-
             LoadContent();
-            this.wall = wall;
-            spriteBatch = new SpriteBatch(game.GraphicsDevice);
+            this.time = time;
             base.Initialize();
         }
 
         public override void Update(GameTime gameTime)
         {
-            foreach (Brick b in wall)
-                b.Update(gameTime);
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            foreach (Brick b in wall)
-                b.Draw(gameTime);
+
+            spriteBatch.DrawString(Game1.Instance.Content.Load<SpriteFont>("Fonts/MainMenu"),
+            "CONGRATULATIONS, YOU HAVE WON!", new Vector2(100, 100), Color.Black);
+            spriteBatch.DrawString(Game1.Instance.Content.Load<SpriteFont>("Fonts/MainMenu"),
+            "You have completed this level in: " + time + " seconds", new Vector2(100, 200), Color.Black);
 
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
-        public void BrickDestroyed(Brick brick)
-        {
-            wall.Remove(brick);
-        }
-
     }
 }

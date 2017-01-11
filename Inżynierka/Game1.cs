@@ -39,10 +39,13 @@ namespace DespatShooter
         public MissionParser missionParser;
         public MissionScreen activeMission;
         public XmlDocument missionsXML = new XmlDocument();
+        public AchievementsManager achievements;
+        public XmlDocument achievementsXML = new XmlDocument();
 
         private Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.SynchronizeWithVerticalRetrace = false;
             Content.RootDirectory = "Content";
         }
 
@@ -70,6 +73,9 @@ namespace DespatShooter
             missionsXML.Load("..\\..\\..\\..\\Content\\Levels\\missions.xml");
             missionsMenu = new MenuMissions(this);
             missionsMenu.Initialize(missionsXML);
+
+            achievementsXML.Load("..\\..\\..\\..\\Content\\achievements.xml");
+            achievements = new AchievementsManager(achievementsXML);
 
             missionParser = new MissionParser(this);
             activeMission = new MissionScreen(this);
@@ -130,8 +136,6 @@ namespace DespatShooter
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-
 
             spriteBatch.Begin();
 

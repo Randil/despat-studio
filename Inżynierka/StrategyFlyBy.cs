@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DespatShooter
 {
-    public class StrategyFlyBy //: IBallCollisionStrategy
+    public class StrategyFlyBy : IBallCollisionStrategy
     {
         public Ball ball;
         public BrickWall bricks;
-        public Player player;
+        public Paddle player;
         bool justReflected = false;
 
-        public StrategyFlyBy(BrickWall bricks, Ball ball, Player player)
+        public StrategyFlyBy(BrickWall bricks, Ball ball, Paddle player)
         {
             this.ball = ball;
             this.bricks = bricks;
@@ -34,11 +34,11 @@ namespace DespatShooter
             if (ball.x >= Game1.Instance.GraphicsDevice.Viewport.Width - ball.sourceRectangle.Width) 
                 CalculateReflectionWall(Ball.hitSide.right);
         }
-        void CalculateReflectionBrick(Ball.hitSide hitSide)
+        public void CalculateReflectionBrick(Ball.hitSide hitSide, Brick brick)
         {
 
         }
-        void CalculateReflectionWall(Ball.hitSide hitSide)
+        public void CalculateReflectionWall(Ball.hitSide hitSide)
         {
             switch (hitSide)
             {
@@ -57,7 +57,7 @@ namespace DespatShooter
             }
 
         }
-        void CalculateReflectionPaddle()
+        public void CalculateReflectionPaddle()
         {
             justReflected = true;
 

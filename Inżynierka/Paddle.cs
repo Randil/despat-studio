@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DespatShooter
 {
-    public class Player : Microsoft.Xna.Framework.DrawableGameComponent
+    public class Paddle : Microsoft.Xna.Framework.DrawableGameComponent
     {
         private Game game;
         SpriteBatch spriteBatch;
@@ -15,7 +15,7 @@ namespace DespatShooter
         public Rectangle destinationRectangle;
         PlayerSteering steering;
 
-        public Player(Game1 game) : base(game)
+        public Paddle(Game1 game) : base(game)
         {
             this.game = game;
         }

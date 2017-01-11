@@ -20,7 +20,6 @@ namespace DespatShooter
         string textureName;
         Game1 game;
         SpriteBatch spriteBatch;
-        StrategyNormal collisionStrategy;
         GameTime previousGameTime;
         int delta;
 
@@ -38,14 +37,13 @@ namespace DespatShooter
             base.LoadContent();
         }
 
-           public void Initialize(StrategyNormal strategy, String textureName, int x, int y)
+           public void Initialize(String textureName, int x, int y)
         {
 
             LoadContent();
             this.x = x;
             this.y = y;
             this.textureName = textureName;
-            this.collisionStrategy = strategy;
 
             sourceRectangle = Game1.Instance.gameTextures.getTextureRectangle(textureName);
             destinationRectangle = new Rectangle(x, y, sourceRectangle.Width, sourceRectangle.Height);
@@ -58,8 +56,6 @@ namespace DespatShooter
         {
             delta = gameTime.TotalGameTime.Milliseconds - previousGameTime.TotalGameTime.Milliseconds;
             if (delta < 0) delta = 1000 + delta;
-
-            collisionStrategy.CheckCollisions();
 
             this.x -= (xSpeed * delta / 1000);
             this.y += (ySpeed * delta / 1000);

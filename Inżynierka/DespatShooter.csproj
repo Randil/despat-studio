@@ -38,7 +38,11 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AchievementsManager.cs" />
     <Compile Include="Ball.cs" />
+    <Compile Include="IBrickObserver.cs" />
+    <Compile Include="MissionFinishedProxy.cs" />
+    <Compile Include="MissionFinishedScreen.cs" />
     <Compile Include="StrategyFireball.cs" />
     <Compile Include="StrategyFlyBy.cs" />
     <Compile Include="Brick.cs" />
@@ -52,7 +56,7 @@
     <Compile Include="MissionScreen.cs" />
     <Compile Include="MissionParser.cs" />
     <Compile Include="MenuMissions.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Paddle.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="PlayerSteering.cs" />
     <Compile Include="Program.cs" />
@@ -78,6 +82,7 @@
     <Content Include="Content\Graphics\assetsSheet.xml" />
     <Content Include="Content\Graphics\assets.png" />
     <Content Include="Content\Graphics\greySheet.png" />
+    <Content Include="Content\achievements.xml" />
     <Content Include="Content\Levels\level1.xml" />
     <Content Include="Content\Levels\level3.xml" />
     <Content Include="Content\Levels\level2.xml" />
