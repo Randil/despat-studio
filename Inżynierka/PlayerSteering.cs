@@ -23,12 +23,12 @@ namespace DespatShooter
 
         public void Update(GameTime gameTime)
         {
-           max = Game1.Instance.GraphicsDevice.Viewport.Width - player.sourceRectangle.Width;
+           max = player.game.GraphicsDevice.Viewport.Width - player.sourceRectangle.Width;
            delta = gameTime.TotalGameTime.Milliseconds - previousGameTime.TotalGameTime.Milliseconds;
            if (delta < 0) delta = 1000 + delta;
-             if (Game1.Instance.currentKeyboardState.IsKeyDown(Keys.Left)) 
+           if (player.game.currentKeyboardState.IsKeyDown(Keys.Left)) 
                  player.x -= (player.movementSpeed * delta / 1000);
-             if (Game1.Instance.currentKeyboardState.IsKeyDown(Keys.Right)) 
+           if (player.game.currentKeyboardState.IsKeyDown(Keys.Right)) 
                  player.x += (player.movementSpeed * delta / 1000);
 
             if(player.x < 0) player.x = 0;

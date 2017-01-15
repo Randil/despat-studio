@@ -1,20 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
-  <brick texture="brick_yellow.png" x="5" y="70" />
-  <brick texture="brick_red.png" x="83" y="70" />
-  <brick texture="brick_green.png" x="165" y="70" />
-  <brick texture="brick_blue.png" x="243" y="70" />
-  <brick texture="brick_gold.png" x="243" y="277" />
-  <brick texture="bonus_smallPaddle.png" x="5" y="115" />
-  <brick texture="bonus_powerBalls.png" x="83" y="115" />
-  <brick texture="bonus_multiBalls.png" x="163" y="115" />
-  <brick texture="bonus_bigPaddle.png" x="241" y="115" />
-  <brick texture="paddle_small.png" x="25" y="190" />
-  <brick texture="paddle_medium.png" x="25" y="220" />
-  <brick texture="paddle_big.png" x="25" y="252" />
-  <brick texture="ball_normal.png" x="285" y="202" />
-  <brick texture="ball_big.png" x="269" y="232" />
-  <brick texture="ball_fire.png" x="260" y="202" />
-  
+  <bricks>
+    <brick texture="brick_red.png" x="50"  y="70"/>
+    <brick texture="brick_red.png" x="120" y="70" />
+    <brick texture="brick_red.png" x="190" y="70" />
+    <brick texture="brick_red.png" x="260" y="70" />
+    <brick texture="brick_red.png" x="330" y="70" />
+    <brick texture="brick_red.png" x="400" y="70" />
+    <brick texture="brick_red.png" x="470" y="70" />
+    <brick texture="brick_red.png" x="540" y="70" />
+    <brick texture="brick_red.png" x="610" y="70" />
+    <brick texture="brick_red.png" x="680" y="70" />
+
+    <brick texture="brick_red.png" x="50"  y="110"/>
+    <brick texture="brick_red.png" x="120" y="110" />
+    <brick texture="brick_red.png" x="190" y="110" />
+    <brick texture="brick_red.png" x="260" y="110" />
+    <brick texture="brick_red.png" x="330" y="110" />
+    <brick texture="brick_red.png" x="400" y="110" />
+    <brick texture="brick_red.png" x="470" y="110" />
+    <brick texture="brick_red.png" x="540" y="110" />
+    <brick texture="brick_red.png" x="610" y="110" />
+    <brick texture="brick_red.png" x="680" y="110" />
+
+    <brick texture="brick_red.png" x="50"  y="140"/>
+    <brick texture="brick_red.png" x="120" y="140" />
+    <brick texture="brick_red.png" x="190" y="140" />
+    <brick texture="brick_yellow.png" x="260" y="140"  bonus="1" />
+    <brick texture="brick_red.png" x="330" y="140"/>
+    <brick texture="brick_red.png" x="400" y="140"/>
+    <brick texture="brick_yellow.png" x="470" y="140"  bonus="1"/>
+    <brick texture="brick_red.png" x="540" y="140" />
+    <brick texture="brick_red.png" x="610" y="140" />
+    <brick texture="brick_red.png" x="680" y="140" />
+
+    <brick texture="brick_yellow.png" x="50"  y="180" bonus="1"/>
+    <brick texture="brick_red.png" x="120" y="180" />
+    <brick texture="brick_red.png" x="190" y="180" />
+    <brick texture="brick_red.png" x="260" y="180" />
+    <brick texture="brick_red.png" x="330" y="180" />
+    <brick texture="brick_red.png" x="400" y="180" />
+    <brick texture="brick_red.png" x="470" y="180" />
+    <brick texture="brick_red.png" x="540" y="180" />
+    <brick texture="brick_red.png" x="610" y="180" />
+    <brick texture="brick_yellow.png" x="680" y="180" bonus="1"/>
+  </bricks>
 </root>
 

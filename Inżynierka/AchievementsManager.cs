@@ -12,7 +12,7 @@ namespace DespatShooter
 
         public int missionsFinished;
         public int bricksDestroyed;
-        XmlDocument achievementsXML;
+        XmlDocument achievementsXML; 
 
         public AchievementsManager (XmlDocument achievementsXML)
         {
@@ -26,7 +26,7 @@ namespace DespatShooter
 
         }
 
-        public void BrickDestroyed(Brick brick)
+        public void BrickDestroyed(IBrick brick)
         {
             bricksDestroyed++;
         }

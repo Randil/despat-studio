@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <bricks>
+    <brick texture="brick_red.png" x="50"  y="70"/>
+    <brick texture="brick_red.png" x="120" y="70" />
+    <brick texture="brick_red.png" x="190" y="70" />
+    <brick texture="brick_red.png" x="260" y="70" />
+    <brick texture="brick_red.png" x="470" y="70" />
+    <brick texture="brick_red.png" x="540" y="70" />
+    <brick texture="brick_red.png" x="610" y="70" />
+    <brick texture="brick_red.png" x="680" y="70" />
+
+    <brick texture="brick_red.png" x="50"  y="110"/>
+    <brick texture="brick_gold.png" x="120" y="110" bonus="1"/>
+    <brick texture="brick_red.png" x="190" y="110" />
+    <brick texture="brick_blue.png" x="260" y="110" hardness ="3"/>
+    <brick texture="brick_blue.png" x="470" y="110" hardness ="3"/>
+    <brick texture="brick_red.png" x="540" y="110" />
+    <brick texture="brick_gold.png" x="610" y="110" bonus="1"/>
+    <brick texture="brick_red.png" x="680" y="110" />
+
+    <brick texture="brick_red.png" x="50"  y="140"/>
+    <brick texture="brick_red.png" x="120" y="140" />
+    <brick texture="brick_gold.png" x="190" y="140" bonus="1"/>
+    <brick texture="brick_red.png" x="260" y="140"  />
+    <brick texture="brick_red.png" x="470" y="140"  />
+    <brick texture="brick_gold.png" x="540" y="140" bonus="1"/>
+    <brick texture="brick_red.png" x="610" y="140" />
+    <brick texture="brick_red.png" x="680" y="140" />
+
+    <brick texture="brick_gold.png" x="50"  y="180" bonus="1"/>
+    <brick texture="brick_red.png" x="120" y="180" />
+    <brick texture="brick_red.png" x="190" y="180" />
+    <brick texture="brick_blue.png" x="260" y="180" hardness ="3"/>
+    <brick texture="brick_blue.png" x="470" y="180" hardness ="3"/>
+    <brick texture="brick_red.png" x="540" y="180" />
+    <brick texture="brick_red.png" x="610" y="180" />
+    <brick texture="brick_gold.png" x="680" y="180" bonus="1"/>
+
+    <brick texture="brick_green.png" x="50"  y="240" invisible ="1" hardness ="2"/>
+    <brick texture="brick_green.png" x="120" y="240" invisible ="1" hardness ="2" />
+    <brick texture="brick_green.png" x="190" y="240" invisible ="1" hardness ="2"/>
+    <brick texture="brick_green.png" x="260" y="240" invisible ="1" hardness ="2"/>
+    <brick texture="brick_green.png" x="330" y="240" invisible ="1" hardness ="2"/>
+    <brick texture="brick_green.png" x="400" y="240" invisible ="1" hardness ="2"/>  
+    <brick texture="brick_green.png" x="470" y="240" invisible ="1" hardness ="2"/>
+    <brick texture="brick_green.png" x="540" y="240" invisible ="1" hardness ="2"/>
+    <brick texture="brick_green.png" x="610" y="240" invisible ="1" hardness ="2"/>
+    <brick texture="brick_green.png" x="680" y="240" invisible ="1" hardness ="2"/>
+
+    <brick texture="brick_blue.png" x="50"  y="300" invisible ="1" hardness ="2" bonus="0"/>
+    <brick texture="brick_blue.png" x="120" y="300" invisible ="1" hardness ="2" bonus="1" />
+    <brick texture="brick_blue.png" x="190" y="300" invisible ="1" hardness ="2" bonus="0"/>
+    <brick texture="brick_blue.png" x="260" y="300" invisible ="1" hardness ="2" bonus="1"/>
+    <brick texture="brick_blue.png" x="470" y="300" invisible ="1" hardness ="2" bonus="0"/>
+    <brick texture="brick_blue.png" x="540" y="300" invisible ="1" hardness ="2" bonus="1"/>
+    <brick texture="brick_blue.png" x="610" y="300" invisible ="1" hardness ="2" bonus="0"/>
+    <brick texture="brick_blue.png" x="680" y="300" invisible ="1" hardness ="2" bonus="1"/>
+  </bricks>
+  
+</root>
+

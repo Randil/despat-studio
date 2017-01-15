@@ -13,7 +13,7 @@ namespace DespatShooter
         [STAThread]
         static void Main()
         {
-            using (var game = Game1.Instance)
+            using (var game = DespatBreakout.Instance)
                 game.Run();
         }
     }

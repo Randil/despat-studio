@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
-  <brick texture="brick_yellow.png" x="200" y="200" />
-  
+  <bricks>
+    <brick texture="brick_yellow.png" x="200" y="200" hardness ="2" invisible="0" bonus="1" />
+    <brick texture="brick_yellow.png" x="300" y="200" hardness ="2" invisible="0" bonus="1" />
+    <brick texture="brick_yellow.png" x="500" y="200" hardness ="0" invisible="0" bonus="1" />
+    <brick texture="brick_yellow.png" x="600" y="200" hardness ="0" invisible="0" bonus="1" />
+    <brick texture="brick_yellow.png" x="600" y="100" hardness ="0" invisible="0" bonus="1" />
+    <brick texture="brick_yellow.png" x="500" y="100" hardness ="0" invisible="0" bonus="1" />
+  </bricks>
 </root>
 

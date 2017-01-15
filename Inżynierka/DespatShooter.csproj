@@ -40,6 +40,15 @@
   <ItemGroup>
     <Compile Include="AchievementsManager.cs" />
     <Compile Include="Ball.cs" />
+    <Compile Include="BonusAditionalBall.cs" />
+    <Compile Include="BonusBigPaddle.cs" />
+    <Compile Include="BonusFireball.cs" />
+    <Compile Include="Bonus.cs" />
+    <Compile Include="BonusSmallPaddle.cs" />
+    <Compile Include="BrickBonus.cs" />
+    <Compile Include="BrickHard.cs" />
+    <Compile Include="BrickInvisible.cs" />
+    <Compile Include="IBrick.cs" />
     <Compile Include="IBrickObserver.cs" />
     <Compile Include="MissionFinishedProxy.cs" />
     <Compile Include="MissionFinishedScreen.cs" />
@@ -49,7 +58,6 @@
     <Compile Include="BrickWall.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="ButtonMission.cs" />
-    <Compile Include="Enemy.cs" />
     <Compile Include="IBallCollisionStrategy.cs" />
     <Compile Include="MenuMain.cs" />
     <Compile Include="Menu.cs" />
@@ -57,7 +65,7 @@
     <Compile Include="MissionParser.cs" />
     <Compile Include="MenuMissions.cs" />
     <Compile Include="Paddle.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="DespatBreakout.cs" />
     <Compile Include="PlayerSteering.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +91,8 @@
     <Content Include="Content\Graphics\assets.png" />
     <Content Include="Content\Graphics\greySheet.png" />
     <Content Include="Content\achievements.xml" />
+    <Content Include="Content\Levels\level5.xml" />
+    <Content Include="Content\Levels\level4.xml" />
     <Content Include="Content\Levels\level1.xml" />
     <Content Include="Content\Levels\level3.xml" />
     <Content Include="Content\Levels\level2.xml" />

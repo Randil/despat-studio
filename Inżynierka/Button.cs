@@ -17,16 +17,17 @@ namespace DespatShooter
         public String textureName;
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
-        public Game1.GameState clickDestination;
-        private Game game;
+        public DespatBreakout.GameState clickDestination;
+        public DespatBreakout game;
         public bool isHoovered;
         public SpriteBatch spriteBatch;
 
-        public Button(Game1 game, Game1.GameState clickDestination)
+        public Button(DespatBreakout game, DespatBreakout.GameState clickDestination)
             : base(game)
         {
             this.game = game;
             this.clickDestination = clickDestination;
+            
         }
 
         protected override void LoadContent()
@@ -45,8 +46,7 @@ namespace DespatShooter
             buttonText = text;
             this.textureName = textureName;
             isHoovered = false;
-
-            sourceRectangle = Game1.Instance.buttonTextures.getTextureRectangle(textureName);
+            sourceRectangle = game.buttonTextures.GetTextureRectangle(textureName);
             destinationRectangle = new Rectangle(x, y, sourceRectangle.Width, sourceRectangle.Height);
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
 
@@ -63,12 +63,12 @@ namespace DespatShooter
             spriteBatch.Begin();
 
             if(!isHoovered)
-                spriteBatch.Draw(Game1.Instance.buttonTextures.textureSheet, 
+                spriteBatch.Draw(game.buttonTextures.textureSheet, 
                 destinationRectangle, 
                 sourceRectangle, 
                 Color.White);
             else
-                spriteBatch.Draw(Game1.Instance.buttonTextures.textureSheet,
+                spriteBatch.Draw(game.buttonTextures.textureSheet,
                 destinationRectangle,
                 sourceRectangle,
                 Color.SkyBlue);
@@ -81,7 +81,7 @@ namespace DespatShooter
 
         public virtual void Click()
         {
-            Game1.Instance.currentGameState = clickDestination;
+            game.currentGameState = clickDestination;
         }
 
         static public void DrawButtonText(SpriteBatch spriteBatch, SpriteFont font, string text, Rectangle boundaries)

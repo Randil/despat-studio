@@ -17,19 +17,38 @@ namespace DespatShooter
         public float x, y;
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
-        string textureName;
-        Game1 game;
+        public string textureName;
+        DespatBreakout game;
         SpriteBatch spriteBatch;
         GameTime previousGameTime;
         int delta;
+        int delay;
+        public IBallCollisionStrategy collisionStrategy;
 
         public float xSpeed = 0f;
         public float ySpeed = -500f;
         public float maxSpeed = 500f;
 
-          public Ball(Game1 game) : base(game)
+          public Ball(DespatBreakout game) : base(game)
         {
             this.game = game;
+        }
+
+          public void FallDown()
+        {
+            game.activeMission.BallFalled(this);
+        }
+
+        public Ball Duplicate()
+        {
+            Ball ball = new Ball(game);
+            ball.Initialize(textureName, collisionStrategy, (int)x, (int)y);
+            ball.collisionStrategy = ball.collisionStrategy.Duplicate(ball);
+            ball.delay = -100;
+            ball.xSpeed = xSpeed;
+            ball.ySpeed = ySpeed;
+            ball.previousGameTime = previousGameTime;
+            return ball;
         }
 
            protected override void LoadContent()
@@ -37,15 +56,17 @@ namespace DespatShooter
             base.LoadContent();
         }
 
-           public void Initialize(String textureName, int x, int y)
+           public void Initialize(String textureName, IBallCollisionStrategy collisionStrategy, int x, int y)
         {
 
             LoadContent();
             this.x = x;
             this.y = y;
             this.textureName = textureName;
+            this.collisionStrategy = collisionStrategy;
+            delay = 1500;
 
-            sourceRectangle = Game1.Instance.gameTextures.getTextureRectangle(textureName);
+            sourceRectangle = DespatBreakout.Instance.gameTextures.GetTextureRectangle(textureName);
             destinationRectangle = new Rectangle(x, y, sourceRectangle.Width, sourceRectangle.Height);
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
             previousGameTime = new GameTime();
@@ -54,15 +75,21 @@ namespace DespatShooter
 
         public override void Update(GameTime gameTime)
         {
+
             delta = gameTime.TotalGameTime.Milliseconds - previousGameTime.TotalGameTime.Milliseconds;
+            previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
+
             if (delta < 0) delta = 1000 + delta;
+
+            delay -= delta;
+            if (delay > 0) return;  //We want some time before the ball starts flying
+
+            collisionStrategy.CheckCollisions();
 
             this.x -= (xSpeed * delta / 1000);
             this.y += (ySpeed * delta / 1000);
 
             destinationRectangle = new Rectangle((int)x, (int)y, sourceRectangle.Width, sourceRectangle.Height);
-
-            previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
 
             base.Update(gameTime);
         }
@@ -70,7 +97,7 @@ namespace DespatShooter
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(Game1.Instance.gameTextures.textureSheet,
+            spriteBatch.Draw(DespatBreakout.Instance.gameTextures.textureSheet,
                 destinationRectangle,
                 sourceRectangle,
                 Color.White);

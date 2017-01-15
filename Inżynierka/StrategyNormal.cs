@@ -11,7 +11,8 @@ namespace DespatShooter
         public Ball ball;
         public BrickWall bricks;
         public Paddle player;
-        bool justReflected = false;
+        bool justReflected = false; 
+        bool intersectionOccured = false;
 
         public StrategyNormal(BrickWall bricks, Ball ball, Paddle player)
         {
@@ -22,49 +23,51 @@ namespace DespatShooter
 
         public void CheckCollisions()
         {
-           foreach(Brick b in bricks.wall)
+           intersectionOccured = false;
+           foreach(IBrick b in bricks.wall)
            {
-               if (b.destinationRectangle.Intersects(ball.destinationRectangle))
+               if (b.GetDestinationRectangle().Intersects(ball.destinationRectangle))
                {
+                   intersectionOccured = true;
                    if (justReflected == false)
                    {
                        //Left/right
-                       if (ball.destinationRectangle.Left <= b.destinationRectangle.Right &&
-                           ball.destinationRectangle.Right >= b.destinationRectangle.Right &&
+                       if (ball.destinationRectangle.Left <= b.GetDestinationRectangle().Right &&
+                           ball.destinationRectangle.Right >= b.GetDestinationRectangle().Right &&
                            ball.xSpeed > 0)
                        { CalculateReflectionBrick(Ball.hitSide.left, b); }
-                       else if (ball.destinationRectangle.Right >= b.destinationRectangle.Left &&
-                           ball.destinationRectangle.Left <= b.destinationRectangle.Left &&
+                       else if (ball.destinationRectangle.Right >= b.GetDestinationRectangle().Left &&
+                           ball.destinationRectangle.Left <= b.GetDestinationRectangle().Left &&
                            ball.xSpeed > 0)
                        { CalculateReflectionBrick(Ball.hitSide.right, b); }
 
                        //Top/bottom
-                       else if (ball.destinationRectangle.Top <= b.destinationRectangle.Bottom)
+                       else if (ball.destinationRectangle.Top <= b.GetDestinationRectangle().Bottom)
                        { CalculateReflectionBrick(Ball.hitSide.bottom, b); }
-                       else if (ball.destinationRectangle.Bottom >= b.destinationRectangle.Top)
+                       else if (ball.destinationRectangle.Bottom >= b.GetDestinationRectangle().Top)
                        { CalculateReflectionBrick(Ball.hitSide.top, b); }
                    }
-                   else justReflected = false;
-
                    if (justReflected == true)
                    {
-                       b.destroy();
+                       b.Hit(b);
                        break;
                    }
                }
            }
+           if (intersectionOccured == false) justReflected = false;
+
             if (ball.destinationRectangle.Intersects(player.destinationRectangle))
                 { if (justReflected == false) CalculateReflectionPaddle(); }
             else justReflected = false;
 
             if (ball.y <= 0) CalculateReflectionWall(Ball.hitSide.top);
-            if (ball.y >= Game1.Instance.GraphicsDevice.Viewport.Height - ball.sourceRectangle.Height) 
+            if (ball.y >= player.game.GraphicsDevice.Viewport.Height - ball.sourceRectangle.Height) 
                 CalculateReflectionWall(Ball.hitSide.bottom);
             if (ball.x <= 0) CalculateReflectionWall(Ball.hitSide.left);
-            if (ball.x >= Game1.Instance.GraphicsDevice.Viewport.Width - ball.sourceRectangle.Width) 
+            if (ball.x >= player.game.GraphicsDevice.Viewport.Width - ball.sourceRectangle.Width) 
                 CalculateReflectionWall(Ball.hitSide.right);
         }
-        public void CalculateReflectionBrick(Ball.hitSide hitSide, Brick brick)
+        public void CalculateReflectionBrick(Ball.hitSide hitSide, IBrick brick)
         {
             justReflected = true;
             //Notice that effects depending on HitSide are reversed in comparison to CalculateReflectionWall
@@ -94,8 +97,8 @@ namespace DespatShooter
                 case Ball.hitSide.top:
                     ball.ySpeed = -ball.ySpeed;
                     break;
-                case Ball.hitSide.bottom:
-                    ball.ySpeed = -ball.ySpeed;
+                case Ball.hitSide.bottom: //Ball fell down      
+                    ball.FallDown();
                     break;
                 case Ball.hitSide.left:
                     ball.xSpeed = -ball.xSpeed;
@@ -119,6 +122,12 @@ namespace DespatShooter
 
             if (reflectionFactor > 0) ball.xSpeed = xChange;
             else ball.xSpeed = -xChange;
+        }
+
+        public IBallCollisionStrategy Duplicate(Ball ball)
+        {
+            IBallCollisionStrategy strategy = new StrategyNormal(this.bricks, ball, this.player);
+            return strategy;
         }
 
     }

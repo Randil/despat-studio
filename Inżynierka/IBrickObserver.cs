@@ -8,6 +8,6 @@ namespace DespatShooter
 {
     public interface IBrickObserver
     {
-        void BrickDestroyed(Brick brick);
+        void BrickDestroyed(IBrick brick);
     }
 }

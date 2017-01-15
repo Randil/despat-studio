@@ -11,10 +11,9 @@ namespace DespatShooter
 {
     class ButtonMission : Button
     {
-        private Game game;
         XmlDocument missionScenario;
 
-        public ButtonMission(Game1 game, Game1.GameState clickDestination, XmlDocument missionScenario)
+        public ButtonMission(DespatBreakout game, DespatBreakout.GameState clickDestination, XmlDocument missionScenario)
             : base(game, clickDestination)
         {
             this.game = game;
@@ -25,7 +24,7 @@ namespace DespatShooter
 
         public override void Click()
         {
-            Game1.Instance.missionParser.createMission(missionScenario);
+            DespatBreakout.Instance.missionParser.CreateMission(missionScenario);
         }
     }
 }

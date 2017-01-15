@@ -19,7 +19,7 @@ namespace DespatShooter
         {
             textures = new List<TextureSheetElement> { };
             basePath = textureAtlas.DocumentElement.ChildNodes[0].Attributes["imagePath"].InnerText;
-            textureSheet = Game1.Instance.Content.Load<Texture2D>("Graphics\\"+ basePath );
+            textureSheet = DespatBreakout.Instance.Content.Load<Texture2D>("Graphics\\"+ basePath );
             string name; 
             int x, y, width, height;
             foreach (XmlNode node in textureAtlas.DocumentElement.ChildNodes[0].ChildNodes)
@@ -34,7 +34,7 @@ namespace DespatShooter
 
         }
 
-        public Rectangle getTextureRectangle(string name)
+        public Rectangle GetTextureRectangle(string name)
         {
             Rectangle result = new Rectangle();
             foreach(TextureSheetElement t in textures)

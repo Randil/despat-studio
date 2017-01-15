@@ -12,10 +12,10 @@ namespace DespatShooter
         {
 
         }
-        public void missionFinished(double time, MissionFinishedScreen finishScreen)
+        public void MissionFinished(double time, MissionFinishedScreen finishScreen, string text)
         {
-            Game1.Instance.achievements.MissionFinished(time);
-            finishScreen.Initialize(time);
+            DespatBreakout.Instance.achievements.MissionFinished(time);
+            finishScreen.Initialize(time, text);
         }
                       
     }

@@ -12,9 +12,9 @@ namespace DespatShooter
 
     //Pattern - Game Loop, see more at http://gameprogrammingpatterns.com/game-loop.html
 
-    public class Game1 : Game
+    public class DespatBreakout : Game
     {
-        private static Game1 instance;
+        private static DespatBreakout instance;
 
         GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
@@ -28,9 +28,11 @@ namespace DespatShooter
         public KeyboardState currentKeyboardState;
         public KeyboardState previousKeyboardState;
 
+        public GameTime currentGameTime;
+
         public enum GameState
         {
-            MainMenu, Mission, Achievements, MissionChoice, Tutorial
+            MainMenu, Mission, Achievements, MissionChoice, Tutorial, Exit
         }
         public GameState currentGameState = GameState.MainMenu;
 
@@ -41,21 +43,22 @@ namespace DespatShooter
         public XmlDocument missionsXML = new XmlDocument();
         public AchievementsManager achievements;
         public XmlDocument achievementsXML = new XmlDocument();
+        public Random rand = new Random();
 
-        private Game1()
+        private DespatBreakout()
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.SynchronizeWithVerticalRetrace = false;
             Content.RootDirectory = "Content";
         }
 
-        public static Game1 Instance
+        public static DespatBreakout Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new Game1();
+                    instance = new DespatBreakout();
                 }
                 return instance;
             }
@@ -103,8 +106,9 @@ namespace DespatShooter
 
         protected override void Update(GameTime gameTime)
         {
+            currentGameTime = gameTime;
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+                currentGameState = GameState.MainMenu;
 
             previousKeyboardState = currentKeyboardState;
             currentKeyboardState = Keyboard.GetState();

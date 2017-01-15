@@ -28,13 +28,13 @@ namespace DespatShooter
             else justReflected = false;
 
             if (ball.y <= 0) CalculateReflectionWall(Ball.hitSide.top);
-            if (ball.y >= Game1.Instance.GraphicsDevice.Viewport.Height - ball.sourceRectangle.Height) 
+            if (ball.y >= player.game.GraphicsDevice.Viewport.Height - ball.sourceRectangle.Height) 
                 CalculateReflectionWall(Ball.hitSide.bottom);
             if (ball.x <= 0) CalculateReflectionWall(Ball.hitSide.left);
-            if (ball.x >= Game1.Instance.GraphicsDevice.Viewport.Width - ball.sourceRectangle.Width) 
+            if (ball.x >= player.game.GraphicsDevice.Viewport.Width - ball.sourceRectangle.Width) 
                 CalculateReflectionWall(Ball.hitSide.right);
         }
-        public void CalculateReflectionBrick(Ball.hitSide hitSide, Brick brick)
+        public void CalculateReflectionBrick(Ball.hitSide hitSide, IBrick brick)
         {
 
         }
@@ -70,6 +70,12 @@ namespace DespatShooter
 
             if (reflectionFactor > 0) ball.xSpeed = xChange;
             else ball.xSpeed =  -xChange;
+        }
+
+        public IBallCollisionStrategy Duplicate(Ball ball)
+        {
+            IBallCollisionStrategy strategy = new StrategyFlyBy(this.bricks, ball, this.player);
+            return strategy;
         }
 
     }

@@ -10,19 +10,22 @@ namespace DespatShooter
 {
     public class MissionScreen : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        private Game game;
+        private DespatBreakout game;
         SpriteBatch spriteBatch;
-        Paddle player;
+        public Paddle player;
         public BrickWall bricks;
-        Ball ball;
+        public List<Ball> balls;
+        List<Ball> ballsToRemove;
+        public List<Bonus> bonuses;
+        List<Bonus> bonusesToRemove;
         bool onGoing;
+        bool finished;
         GameTime startTime;
         double time;
         MissionFinishedScreen finishScreen;
         MissionFinishedProxy finishedProxy;
-        IBallCollisionStrategy collisionStrategy;
 
-        public MissionScreen(Game1 game) : base(game)
+        public MissionScreen(DespatBreakout game) : base(game)
         {
             this.game = game;
         }
@@ -36,30 +39,36 @@ namespace DespatShooter
         {
             
             LoadContent();
-            spriteBatch = new SpriteBatch(Game1.Instance.GraphicsDevice);
+            spriteBatch = new SpriteBatch(game.GraphicsDevice);
             onGoing = false;
-
-            player = new Paddle(Game1.Instance);
+            finished = false;
+            player = new Paddle(game);
             player.Initialize("paddle_medium.png",
-                (Game1.Instance.GraphicsDevice.Viewport.Width - Game1.Instance.gameTextures.getTextureRectangle("paddle_medium.png").Width) / 2,
-                Game1.Instance.GraphicsDevice.Viewport.Height - 50);
+                (game.GraphicsDevice.Viewport.Width - game.gameTextures.GetTextureRectangle("paddle_medium.png").Width) / 2,
+                game.GraphicsDevice.Viewport.Height - 50);
 
-            ball = new Ball(Game1.Instance);
-            ball.Initialize("ball_normal.png",
-                (Game1.Instance.GraphicsDevice.Viewport.Width - Game1.Instance.gameTextures.getTextureRectangle("ball_normal.png").Width) / 2,
-                 Game1.Instance.GraphicsDevice.Viewport.Height - 50 - Game1.Instance.gameTextures.getTextureRectangle("ball_normal.png").Height);
 
-            collisionStrategy = new StrategyNormal(bricks, ball, player);
+            Ball ball = new Ball(game);
+            IBallCollisionStrategy collisionStrategy = new StrategyNormal(bricks, ball, player);
+
+            ball.Initialize("ball_normal.png", collisionStrategy,
+                (game.GraphicsDevice.Viewport.Width - game.gameTextures.GetTextureRectangle("ball_normal.png").Width) / 2,
+                 game.GraphicsDevice.Viewport.Height - 50 - game.gameTextures.GetTextureRectangle("ball_normal.png").Height);
+
+            balls = new List<Ball> {ball};
+            ballsToRemove = new List<Ball> {};
+            bonuses = new List<Bonus> { };
+            bonusesToRemove = new List<Bonus> { };
 
             startTime = new GameTime();
-            finishScreen = new MissionFinishedScreen(Game1.Instance);
+            finishScreen = new MissionFinishedScreen(game);
             finishedProxy = new MissionFinishedProxy();
             base.Initialize();
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (bricks.wall.Count != 0)
+            if (finished == false)
             {
                 if (onGoing == false)
                 {
@@ -67,16 +76,18 @@ namespace DespatShooter
                     onGoing = true;
                 }
 
-                collisionStrategy.CheckCollisions();
-                ball.Update(gameTime);
+                time = gameTime.TotalGameTime.TotalSeconds - startTime.TotalGameTime.TotalSeconds;
+                foreach(Ball b in balls)
+                    b.Update(gameTime);
+                RemoveBalls();
+
+                foreach (Bonus bo in bonuses)
+                    bo.Update(gameTime);
+                RemoveBonuses();
+
                 player.Update(gameTime);
                 bricks.Update(gameTime); 
-            }
-            else if (onGoing == true)  //End of the mission
-            {
-                time = gameTime.TotalGameTime.TotalSeconds - startTime.TotalGameTime.TotalSeconds;
-                finishedProxy.missionFinished(time, finishScreen);
-                onGoing = false;
+                
             }
             base.Update(gameTime);
         }
@@ -84,19 +95,58 @@ namespace DespatShooter
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
+            
+            foreach (Ball b in balls)
+            b.Draw(gameTime);
 
-                ball.Draw(gameTime);
-                player.Draw(gameTime);
-                bricks.Draw(gameTime);
+            foreach (Bonus bo in bonuses)
+                bo.Draw(gameTime);
 
-                if (bricks.wall.Count == 0)
-                {
-                    finishScreen.Draw(gameTime);   
-                }
+            player.Draw(gameTime);
+            bricks.Draw(gameTime);
+
+            if (finished == true) finishScreen.Draw(gameTime);
 
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public void BallFalled(Ball ball)
+        {
+            ballsToRemove.Add(ball);
+        }
+
+        public void RemoveBalls()
+        {
+            foreach (Ball b in ballsToRemove)
+                balls.Remove(b);
+            ballsToRemove.Clear();
+            if (balls.Count == 0)
+                MissionFailed();
+        }
+        public void RemoveBonuses()
+        {
+            foreach(Bonus b in bonusesToRemove)
+                bonuses.Remove(b);
+            bonusesToRemove.Clear();
+        }
+        public void BonusCollected(Bonus bonus)
+        {
+            bonusesToRemove.Add(bonus);
+        }
+        public void MissionSuccess()
+        {
+            finished = true;
+            finishedProxy.MissionFinished(time, finishScreen, "Congratulations, you have won!");
+            onGoing = false;
+        }
+
+        public void MissionFailed()
+        {
+            finished = true;
+            finishedProxy.MissionFinished(time, finishScreen, "You failed!");
+            onGoing = false;
         }
 
 

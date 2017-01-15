@@ -8,41 +8,46 @@ using System.Threading.Tasks;
 
 namespace DespatShooter
 {
-    public class Brick : Microsoft.Xna.Framework.DrawableGameComponent
+    public class Brick : Microsoft.Xna.Framework.DrawableGameComponent, IBrick
     {
         int x, y;
         private Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
         string textureName;
-        Game1 game;
+        DespatBreakout game;
         SpriteBatch spriteBatch;
         List<IBrickObserver> observers;
 
-         public Brick(Game1 game) : base(game)
+         public Brick(DespatBreakout game) : base(game)
         {
             this.game = game;
             observers = new List<IBrickObserver> { };
         }
 
-        public void destroy()
+        public void Destroy(IBrick brick)
         {
             foreach (IBrickObserver o in observers)
-                o.BrickDestroyed(this);
+                o.BrickDestroyed(brick);
 
             //TODO: Visual or sound effect?
         }
 
-        public void subscribe(IBrickObserver observer)
+        public void Hit(IBrick brick)
+        {
+            brick.Destroy(brick);
+        }
+
+        public void Subscribe(IBrickObserver observer)
         {
             observers.Add(observer);
         }
 
-        public void unsubscribe(IBrickObserver observer)
+        public void Unsubscribe(IBrickObserver observer)
         {
             observers.Remove(observer);
         }
 
-           protected override void LoadContent()
+         new public void LoadContent()
         {
             base.LoadContent();
         }
@@ -55,7 +60,7 @@ namespace DespatShooter
             this.y = y;
             this.textureName = textureName;
 
-            sourceRectangle = Game1.Instance.gameTextures.getTextureRectangle(textureName);
+            sourceRectangle = game.gameTextures.GetTextureRectangle(textureName);
             destinationRectangle = new Rectangle(x, y, sourceRectangle.Width, sourceRectangle.Height);
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
             base.Initialize();
@@ -69,13 +74,18 @@ namespace DespatShooter
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(Game1.Instance.gameTextures.textureSheet,
+            spriteBatch.Draw(game.gameTextures.textureSheet,
                 destinationRectangle,
                 sourceRectangle,
                 Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }
-       
+        
+        public Rectangle GetDestinationRectangle()
+        {
+            return this.destinationRectangle;
+        }
+
     }
 }

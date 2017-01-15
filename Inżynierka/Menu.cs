@@ -13,12 +13,12 @@ namespace DespatShooter
     { 
         public List<Button> buttons = new List<Button> { };
         public SpriteFont menuFont;
-        private Game game;
+        private DespatBreakout game;
         SpriteBatch spriteBatch;
         public Button activeButton;
         public int activeButtonIndex = 0;
 
-        public Menu(Game1 game) : base(game)
+        public Menu(DespatBreakout game) : base(game)
         {
             this.game = game;
         }
@@ -39,14 +39,14 @@ namespace DespatShooter
 
         public override void Update(GameTime gameTime)
         {
-            if (Game1.Instance.currentKeyboardState.IsKeyDown(Keys.Down) && Game1.Instance.previousKeyboardState.IsKeyUp(Keys.Down))
+            if (game.currentKeyboardState.IsKeyDown(Keys.Down) && game.previousKeyboardState.IsKeyUp(Keys.Down))
             {
                 activeButton.isHoovered = false;
                 activeButtonIndex = (activeButtonIndex + 1) % buttons.Count;
                 activeButton = buttons[activeButtonIndex];
                 activeButton.isHoovered = true;
             }
-            if (Game1.Instance.currentKeyboardState.IsKeyDown(Keys.Up) && Game1.Instance.previousKeyboardState.IsKeyUp(Keys.Up))
+            if (game.currentKeyboardState.IsKeyDown(Keys.Up) && game.previousKeyboardState.IsKeyUp(Keys.Up))
             {
                 activeButton.isHoovered = false;
                 activeButtonIndex = (activeButtonIndex - 1);
@@ -54,7 +54,7 @@ namespace DespatShooter
                 activeButton = buttons[activeButtonIndex];
                 activeButton.isHoovered = true;
             }
-            if (Game1.Instance.currentKeyboardState.IsKeyDown(Keys.Enter) && Game1.Instance.previousKeyboardState.IsKeyUp(Keys.Enter))
+            if (game.currentKeyboardState.IsKeyDown(Keys.Enter) && game.previousKeyboardState.IsKeyUp(Keys.Enter))
             {
                 activeButton.Click();
             }

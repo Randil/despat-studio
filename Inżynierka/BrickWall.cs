@@ -10,11 +10,11 @@ namespace DespatShooter
 {
     public class BrickWall : Microsoft.Xna.Framework.DrawableGameComponent, IBrickObserver
     {
-        public List<Brick> wall;
-        Game1 game;
+        public List<IBrick> wall;
+        DespatBreakout game;
         SpriteBatch spriteBatch;
 
-         public BrickWall(Game1 game) : base(game)
+         public BrickWall(DespatBreakout game) : base(game)
         {
             this.game = game;
         }
@@ -24,7 +24,7 @@ namespace DespatShooter
             base.LoadContent();
         }
 
-        public void Initialize(List<Brick> wall)
+        public void Initialize(List<IBrick> wall)
         {
 
             LoadContent();
@@ -35,22 +35,24 @@ namespace DespatShooter
 
         public override void Update(GameTime gameTime)
         {
-            foreach (Brick b in wall)
+            foreach (IBrick b in wall)
                 b.Update(gameTime);
+            if (wall.Count == 0)
+                game.activeMission.MissionSuccess();
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            foreach (Brick b in wall)
+            foreach (IBrick b in wall)
                 b.Draw(gameTime);
 
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
-        public void BrickDestroyed(Brick brick)
+        public void BrickDestroyed(IBrick brick)
         {
             wall.Remove(brick);
         }

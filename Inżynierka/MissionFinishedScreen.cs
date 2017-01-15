@@ -10,15 +10,16 @@ namespace DespatShooter
 {
     class MissionFinishedScreen : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        private Game game;
+        private DespatBreakout game;
         SpriteBatch spriteBatch;
+        string finishString;
         double time;
 
-        public MissionFinishedScreen(Game1 game)
+        public MissionFinishedScreen(DespatBreakout game)
             : base(game)
         {
             this.game = game;
-            spriteBatch = new SpriteBatch(Game1.Instance.GraphicsDevice);
+            spriteBatch = new SpriteBatch(game.GraphicsDevice);
         }
 
            protected override void LoadContent()
@@ -26,10 +27,11 @@ namespace DespatShooter
             base.LoadContent();
         }
 
-        public void Initialize(double time)
+        public void Initialize(double time, string finishString)
         {
             LoadContent();
             this.time = time;
+            this.finishString = finishString;
             base.Initialize();
         }
 
@@ -42,10 +44,10 @@ namespace DespatShooter
         {
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(Game1.Instance.Content.Load<SpriteFont>("Fonts/MainMenu"),
-            "CONGRATULATIONS, YOU HAVE WON!", new Vector2(100, 100), Color.Black);
-            spriteBatch.DrawString(Game1.Instance.Content.Load<SpriteFont>("Fonts/MainMenu"),
-            "You have completed this level in: " + time + " seconds", new Vector2(100, 200), Color.Black);
+            spriteBatch.DrawString(game.Content.Load<SpriteFont>("Fonts/MainMenu"),
+            finishString, new Vector2(100, 100), Color.Black);
+            spriteBatch.DrawString(game.Content.Load<SpriteFont>("Fonts/MainMenu"),
+            "You have played this level for: " + time + " seconds", new Vector2(100, 200), Color.Black);
 
             spriteBatch.End();
 

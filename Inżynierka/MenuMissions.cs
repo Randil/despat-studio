@@ -11,12 +11,12 @@ namespace DespatShooter
 {
     class MenuMissions : Menu
     {
-        private Game game;
+        private DespatBreakout game;
         SpriteBatch spriteBatch;
         public XmlDocument missionsXML;
      
 
-        public MenuMissions(Game1 game) : base(game)
+        public MenuMissions(DespatBreakout game) : base(game)
         {
             this.game = game;
         }
@@ -37,7 +37,7 @@ namespace DespatShooter
                 besttime = node.Attributes["bestTime"].InnerText;
                 XmlDocument scenarioXML = new XmlDocument();
                 scenarioXML.Load("..\\..\\..\\..\\Content\\Levels\\" + filename);
-                ButtonMission button = new ButtonMission(Game1.Instance, Game1.GameState.Mission, scenarioXML);
+                ButtonMission button = new ButtonMission(game, DespatBreakout.GameState.Mission, scenarioXML);
                 button.Initialize(menuFont, 150, height, text, "grey_button15.png");
                 height += 70;
                 buttons.Add(button);

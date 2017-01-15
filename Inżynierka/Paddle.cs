@@ -6,7 +6,7 @@ namespace DespatShooter
 {
     public class Paddle : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        private Game game;
+        public DespatBreakout game;
         SpriteBatch spriteBatch;
         public String texture;
         public float x, y;
@@ -15,7 +15,7 @@ namespace DespatShooter
         public Rectangle destinationRectangle;
         PlayerSteering steering;
 
-        public Paddle(Game1 game) : base(game)
+        public Paddle(DespatBreakout game) : base(game)
         {
             this.game = game;
         }
@@ -26,7 +26,7 @@ namespace DespatShooter
             this.texture = texture;
             this.x = x;
             this.y = y;
-            this.sourceRectangle = Game1.Instance.gameTextures.getTextureRectangle(texture);
+            this.sourceRectangle = game.gameTextures.GetTextureRectangle(texture);
             this.destinationRectangle = new Rectangle((int) x, (int) y, sourceRectangle.Width, sourceRectangle.Height);
             steering = new PlayerSteering(this);
         }
@@ -42,7 +42,7 @@ namespace DespatShooter
         {
               spriteBatch.Begin();
 
-              spriteBatch.Draw(Game1.Instance.gameTextures.textureSheet,
+              spriteBatch.Draw(game.gameTextures.textureSheet,
               destinationRectangle,
               sourceRectangle,
               Color.White);
