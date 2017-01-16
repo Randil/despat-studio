@@ -24,7 +24,7 @@ namespace DespatShooter
 
         public void CheckCollisions()
         {
-           foreach(IBrick b in bricks.wall)
+           foreach (IBrick b in bricks.wall)
            {
                if (b.GetDestinationRectangle().Intersects(ball.destinationRectangle))
                {
@@ -37,58 +37,63 @@ namespace DespatShooter
            bricksToDestroy.Clear();
 
            if (ball.destinationRectangle.Intersects(player.destinationRectangle))
-           { if (justReflected == false) CalculateReflectionPaddle(); }
+           { 
+               if (justReflected == false) CalculateReflectionPaddle(); 
+           }
            else justReflected = false;
 
-           if (ball.y <= 0) CalculateReflectionWall(Ball.hitSide.top);
+           if (ball.y <= 0) CalculateReflectionWall(Ball.HitSide.top);
            if (ball.y >= player.game.GraphicsDevice.Viewport.Height - ball.sourceRectangle.Height)
-               CalculateReflectionWall(Ball.hitSide.bottom);
-           if (ball.x <= 0) CalculateReflectionWall(Ball.hitSide.left);
+               CalculateReflectionWall(Ball.HitSide.bottom);
+           if (ball.x <= 0) CalculateReflectionWall(Ball.HitSide.left);
            if (ball.x >= player.game.GraphicsDevice.Viewport.Width - ball.sourceRectangle.Width)
-               CalculateReflectionWall(Ball.hitSide.right);
+               CalculateReflectionWall(Ball.HitSide.right);
         }
-        public void CalculateReflectionBrick(Ball.hitSide hitSide, IBrick brick)
+
+        public void CalculateReflectionBrick(Ball.HitSide hitSide, IBrick brick)
         {
             justReflected = true;
-            //Notice that effects depending on HitSide are reversed in comparison to CalculateReflectionWall
-            //Thats because the ball is INSIDE game screen and OUTSIDE all the bricks - TOP border of the game screen
-            //Should reflect the ball in the same way BOTTOM border of a brick does etc.
+            // Notice that effects depending on HitSide are reversed in comparison to CalculateReflectionWall
+            // Thats because the ball is INSIDE game screen and OUTSIDE all the bricks - TOP border of the game screen
+            // Should reflect the ball in the same way BOTTOM border of a brick does etc.
             switch (hitSide)
             {
-                case Ball.hitSide.bottom:
+                case Ball.HitSide.bottom:
                     ball.ySpeed = -ball.ySpeed;
                     break;
-                case Ball.hitSide.top:
+                case Ball.HitSide.top:
                     ball.ySpeed = -ball.ySpeed;
                     break;
-                case Ball.hitSide.right:
+                case Ball.HitSide.right:
                     ball.xSpeed = -ball.xSpeed;
                     break;
-                case Ball.hitSide.left:
+                case Ball.HitSide.left:
                     ball.xSpeed = -ball.xSpeed;
                     break;
             }
 
         }
-        public void CalculateReflectionWall(Ball.hitSide hitSide)
+
+        public void CalculateReflectionWall(Ball.HitSide hitSide)
         {
             switch (hitSide)
             {
-                case Ball.hitSide.top:
+                case Ball.HitSide.top:
                     ball.ySpeed = -ball.ySpeed;
                     break;
-                case Ball.hitSide.bottom: //Ball fell down      
+                case Ball.HitSide.bottom: // Ball fell down      
                     ball.FallDown();
                     break;
-                case Ball.hitSide.left:
+                case Ball.HitSide.left:
                     ball.xSpeed = -ball.xSpeed;
                     break;
-                case Ball.hitSide.right:
+                case Ball.HitSide.right:
                     ball.xSpeed = -ball.xSpeed;
                     break;
             }
 
         }
+
         public void CalculateReflectionPaddle()
         {
             justReflected = true;

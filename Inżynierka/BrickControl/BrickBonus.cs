@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DespatShooter
 {
-    class BrickBonus :IBrick
+    class BrickBonus : IBrick
     {
 
         IBrick baseBrick;
@@ -17,48 +17,58 @@ namespace DespatShooter
         {
             baseBrick = brick;
         }
+
         public void Destroy(IBrick brick)
         {
             SpawnBonus();
             baseBrick.Destroy(brick);
         }
+
         public void Hit(IBrick brick)
         {
             baseBrick.Hit(brick);
         }
+
         public void Subscribe(IBrickObserver observer)
         {
             baseBrick.Subscribe(observer);
         }
+
         public void Unsubscribe(IBrickObserver observer)
         {
             baseBrick.Unsubscribe(observer);
         }
+
         public void LoadContent()
         {
             baseBrick.LoadContent();
         }
-        public void Initialize(String textureName, int x, int y)
+
+        public void Initialize(string textureName, int x, int y)
         {
             baseBrick.Initialize(textureName, x, y);
         }
+
         public void Update(GameTime gameTime)
         {
             baseBrick.Update(gameTime);
         }
+
         public void Draw(GameTime gameTime)
         {
                 baseBrick.Draw(gameTime);
         }
+
         public Rectangle GetDestinationRectangle()
         {
             return baseBrick.GetDestinationRectangle();
         }
+
         public void SpawnBonus()
         {
-            //spawn random bonus
+            // spawn random bonus
             int rand = DespatBreakout.Instance.rand.Next(1, 5);
-            switch(rand)
+            switch (rand)
             {
                 case 1:
                     {

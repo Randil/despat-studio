@@ -10,10 +10,7 @@ namespace DespatShooter
 {
     public class Ball : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        public enum hitSide
-        {
-            top, bottom, left, right
-        }
+
         public float x, y;
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
@@ -22,16 +19,20 @@ namespace DespatShooter
         SpriteBatch spriteBatch;
         GameTime previousGameTime;
         int delta;
-        int delay;
         public IBallCollisionStrategy collisionStrategy;
 
-        public float xSpeed = 0f;
-        public float ySpeed = -500f;
+        public float xSpeed;
+        public float ySpeed;
         public float maxSpeed = 500f;
 
           public Ball(DespatBreakout game) : base(game)
         {
             this.game = game;
+        }
+
+          public enum HitSide
+        {
+              top, bottom, left, right
         }
 
           public void FallDown()
@@ -42,9 +43,8 @@ namespace DespatShooter
         public Ball Duplicate()
         {
             Ball ball = new Ball(game);
-            ball.Initialize(textureName, collisionStrategy, (int)x, (int)y);
+            ball.Initialize(textureName, collisionStrategy, (int)x, (int)y, xSpeed, ySpeed);
             ball.collisionStrategy = ball.collisionStrategy.Duplicate(ball);
-            ball.delay = -100;
             ball.xSpeed = xSpeed;
             ball.ySpeed = ySpeed;
             ball.previousGameTime = previousGameTime;
@@ -56,15 +56,16 @@ namespace DespatShooter
             base.LoadContent();
         }
 
-           public void Initialize(String textureName, IBallCollisionStrategy collisionStrategy, int x, int y)
+           public void Initialize(string textureName, IBallCollisionStrategy collisionStrategy, int x, int y, float xSpeed, float ySpeed)
         {
 
             LoadContent();
             this.x = x;
             this.y = y;
+            this.xSpeed = xSpeed;
+            this.ySpeed = ySpeed;
             this.textureName = textureName;
             this.collisionStrategy = collisionStrategy;
-            delay = 1500;
 
             sourceRectangle = DespatBreakout.Instance.gameTextures.GetTextureRectangle(textureName);
             destinationRectangle = new Rectangle(x, y, sourceRectangle.Width, sourceRectangle.Height);
@@ -80,9 +81,6 @@ namespace DespatShooter
             previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
 
             if (delta < 0) delta = 1000 + delta;
-
-            delay -= delta;
-            if (delay > 0) return;  //We want some time before the ball starts flying
 
             collisionStrategy.CheckCollisions();
 
@@ -105,8 +103,10 @@ namespace DespatShooter
             base.Draw(gameTime);
         }
 
-
-
+        public void ResetGameTime(GameTime gameTime)
+        {
+            previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
+        }
 
     }
 }

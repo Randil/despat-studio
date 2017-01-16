@@ -1,0 +1,4 @@
+All content used here was published under Public Domain license. Links to credits:
+assets.png - http://opengameart.org/content/arkanoid-assets
+greySheet.png, greySheet.xml - http://opengameart.org/content/ui-pack
+BrickNormal.png, BrickShadow.png, BrickStone.png - http://xnarkanoid.codeplex.com/SourceControl/latest#XNArkanoid_2010/XNArkanoid/Components/Brick.cs

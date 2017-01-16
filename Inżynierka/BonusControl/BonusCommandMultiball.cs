@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace DespatShooter
 {
-    class BonusAditionalBall : Bonus
+    class BonusCommandMultiball : IBonusCommand
     {
-        public BonusAditionalBall(DespatBreakout game, Paddle player) : base(game, player)
+        DespatBreakout game;
+        Paddle player;
+        public BonusCommandMultiball(DespatBreakout game, Paddle player)
         {
             this.player = player;
             this.game = game;
         }
 
-        public override void GrantBonus()
+        public void GrantBonus()
         {
             List<Ball> ballsToAdd = new List<Ball> { };
-            foreach(Ball ball in game.activeMission.balls)
+            foreach (Ball ball in game.activeMission.balls)
             {
                 ballsToAdd.Add(ball.Duplicate());
                 ball.xSpeed += 50;
@@ -31,8 +32,6 @@ namespace DespatShooter
                 ball.ySpeed += 50;
                 game.activeMission.balls.Add(ball);
             }
-
-            game.activeMission.BonusCollected(this);
         }
     }
 }

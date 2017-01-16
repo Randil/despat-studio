@@ -27,36 +27,39 @@ namespace DespatShooter
                 { if (justReflected == false) CalculateReflectionPaddle(); }
             else justReflected = false;
 
-            if (ball.y <= 0) CalculateReflectionWall(Ball.hitSide.top);
+            if (ball.y <= 0) CalculateReflectionWall(Ball.HitSide.top);
             if (ball.y >= player.game.GraphicsDevice.Viewport.Height - ball.sourceRectangle.Height) 
-                CalculateReflectionWall(Ball.hitSide.bottom);
-            if (ball.x <= 0) CalculateReflectionWall(Ball.hitSide.left);
+                CalculateReflectionWall(Ball.HitSide.bottom);
+            if (ball.x <= 0) CalculateReflectionWall(Ball.HitSide.left);
             if (ball.x >= player.game.GraphicsDevice.Viewport.Width - ball.sourceRectangle.Width) 
-                CalculateReflectionWall(Ball.hitSide.right);
+                CalculateReflectionWall(Ball.HitSide.right);
         }
-        public void CalculateReflectionBrick(Ball.hitSide hitSide, IBrick brick)
+
+        public void CalculateReflectionBrick(Ball.HitSide hitSide, IBrick brick)
         {
 
         }
-        public void CalculateReflectionWall(Ball.hitSide hitSide)
+
+        public void CalculateReflectionWall(Ball.HitSide hitSide)
         {
             switch (hitSide)
             {
-                case Ball.hitSide.top:
+                case Ball.HitSide.top:
                     ball.ySpeed = -ball.ySpeed;
                     break;
-                case Ball.hitSide.bottom:
+                case Ball.HitSide.bottom:
                     ball.ySpeed = -ball.ySpeed;
                     break;
-                case Ball.hitSide.left:
+                case Ball.HitSide.left:
                     ball.xSpeed = -ball.xSpeed;
                     break;
-                case Ball.hitSide.right:
+                case Ball.HitSide.right:
                     ball.xSpeed = -ball.xSpeed;
                     break;
             }
 
         }
+
         public void CalculateReflectionPaddle()
         {
             justReflected = true;
@@ -64,7 +67,7 @@ namespace DespatShooter
             float paddleMiddle = (player.x + player.destinationRectangle.Width / 2);
             float ballMiddle = (ball.x + ball.destinationRectangle.Width / 2);
 
-            float reflectionFactor = (paddleMiddle - ballMiddle)/100;
+            float reflectionFactor = (paddleMiddle - ballMiddle) / 100;
             float xChange = ball.maxSpeed - ball.maxSpeed * (1 - Math.Abs(reflectionFactor));
             ball.ySpeed = -ball.maxSpeed + xChange;
 

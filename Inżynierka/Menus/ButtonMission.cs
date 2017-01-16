@@ -12,6 +12,7 @@ namespace DespatShooter
     class ButtonMission : Button
     {
         XmlDocument missionScenario;
+        MissionSave parsedMission = null;
 
         public ButtonMission(DespatBreakout game, DespatBreakout.GameState clickDestination, XmlDocument missionScenario)
             : base(game, clickDestination)
@@ -21,10 +22,23 @@ namespace DespatShooter
             this.missionScenario = missionScenario;
         }
 
+        public ButtonMission(DespatBreakout game, DespatBreakout.GameState clickDestination, MissionSave missionSave)
+            : base(game, clickDestination)
+        {
+            this.game = game;
+            this.clickDestination = clickDestination;
+            this.parsedMission = missionSave;
+        }
+
 
         public override void Click()
         {
-            DespatBreakout.Instance.missionParser.CreateMission(missionScenario);
+            if (parsedMission != null)
+                {
+                    DespatBreakout.Instance.activeMission.Initialize(parsedMission);
+                    DespatBreakout.Instance.currentGameState = DespatBreakout.GameState.Mission;
+                }
+            else DespatBreakout.Instance.missionParser.CreateMission(missionScenario);
         }
     }
 }

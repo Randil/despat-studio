@@ -13,7 +13,7 @@ namespace DespatShooter
         public float movementSpeed = 500.0f;
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
-        PlayerSteering steering;
+        PaddleSteering steering;
 
         public Paddle(DespatBreakout game) : base(game)
         {
@@ -28,7 +28,7 @@ namespace DespatShooter
             this.y = y;
             this.sourceRectangle = game.gameTextures.GetTextureRectangle(texture);
             this.destinationRectangle = new Rectangle((int) x, (int) y, sourceRectangle.Width, sourceRectangle.Height);
-            steering = new PlayerSteering(this);
+            steering = new PaddleSteering(this);
         }
 
         public override void Update(GameTime gameTime)
@@ -49,6 +49,12 @@ namespace DespatShooter
 
               spriteBatch.End();
         }
+
+        public void ResetGameTime(GameTime gameTime)
+        {
+            this.steering.ResetGameTime(gameTime);
+        }
+
 
     }
 }

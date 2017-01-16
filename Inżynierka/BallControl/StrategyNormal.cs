@@ -24,28 +24,28 @@ namespace DespatShooter
         public void CheckCollisions()
         {
            intersectionOccured = false;
-           foreach(IBrick b in bricks.wall)
+           foreach (IBrick b in bricks.wall)
            {
                if (b.GetDestinationRectangle().Intersects(ball.destinationRectangle))
                {
                    intersectionOccured = true;
                    if (justReflected == false)
                    {
-                       //Left/right
+                       // Left/right
                        if (ball.destinationRectangle.Left <= b.GetDestinationRectangle().Right &&
                            ball.destinationRectangle.Right >= b.GetDestinationRectangle().Right &&
                            ball.xSpeed > 0)
-                       { CalculateReflectionBrick(Ball.hitSide.left, b); }
+                       { CalculateReflectionBrick(Ball.HitSide.left, b); }
                        else if (ball.destinationRectangle.Right >= b.GetDestinationRectangle().Left &&
                            ball.destinationRectangle.Left <= b.GetDestinationRectangle().Left &&
                            ball.xSpeed > 0)
-                       { CalculateReflectionBrick(Ball.hitSide.right, b); }
+                       { CalculateReflectionBrick(Ball.HitSide.right, b); }
 
-                       //Top/bottom
+                       // Top/bottom
                        else if (ball.destinationRectangle.Top <= b.GetDestinationRectangle().Bottom)
-                       { CalculateReflectionBrick(Ball.hitSide.bottom, b); }
+                       { CalculateReflectionBrick(Ball.HitSide.bottom, b); }
                        else if (ball.destinationRectangle.Bottom >= b.GetDestinationRectangle().Top)
-                       { CalculateReflectionBrick(Ball.hitSide.top, b); }
+                       { CalculateReflectionBrick(Ball.HitSide.top, b); }
                    }
                    if (justReflected == true)
                    {
@@ -60,50 +60,50 @@ namespace DespatShooter
                 { if (justReflected == false) CalculateReflectionPaddle(); }
             else justReflected = false;
 
-            if (ball.y <= 0) CalculateReflectionWall(Ball.hitSide.top);
+            if (ball.y <= 0) CalculateReflectionWall(Ball.HitSide.top);
             if (ball.y >= player.game.GraphicsDevice.Viewport.Height - ball.sourceRectangle.Height) 
-                CalculateReflectionWall(Ball.hitSide.bottom);
-            if (ball.x <= 0) CalculateReflectionWall(Ball.hitSide.left);
+                CalculateReflectionWall(Ball.HitSide.bottom);
+            if (ball.x <= 0) CalculateReflectionWall(Ball.HitSide.left);
             if (ball.x >= player.game.GraphicsDevice.Viewport.Width - ball.sourceRectangle.Width) 
-                CalculateReflectionWall(Ball.hitSide.right);
+                CalculateReflectionWall(Ball.HitSide.right);
         }
-        public void CalculateReflectionBrick(Ball.hitSide hitSide, IBrick brick)
+        public void CalculateReflectionBrick(Ball.HitSide hitSide, IBrick brick)
         {
             justReflected = true;
-            //Notice that effects depending on HitSide are reversed in comparison to CalculateReflectionWall
-            //Thats because the ball is INSIDE game screen and OUTSIDE all the bricks - TOP border of the game screen
-            //Should reflect the ball in the same way BOTTOM border of a brick does etc.
+            // Notice that effects depending on HitSide are reversed in comparison to CalculateReflectionWall
+            // Thats because the ball is INSIDE game screen and OUTSIDE all the bricks - TOP border of the game screen
+            // Should reflect the ball in the same way BOTTOM border of a brick does etc.
             switch (hitSide)
             {
-                case Ball.hitSide.bottom:
+                case Ball.HitSide.bottom:
                     ball.ySpeed = -ball.ySpeed;
                     break;
-                case Ball.hitSide.top:
+                case Ball.HitSide.top:
                     ball.ySpeed = -ball.ySpeed;
                     break;
-                case Ball.hitSide.right:
+                case Ball.HitSide.right:
                     ball.xSpeed = -ball.xSpeed;
                     break;
-                case Ball.hitSide.left:
+                case Ball.HitSide.left:
                     ball.xSpeed = -ball.xSpeed;
                     break;
             }
 
         }
-        public void CalculateReflectionWall(Ball.hitSide hitSide)
+        public void CalculateReflectionWall(Ball.HitSide hitSide)
         {
             switch (hitSide)
             {
-                case Ball.hitSide.top:
+                case Ball.HitSide.top:
                     ball.ySpeed = -ball.ySpeed;
                     break;
-                case Ball.hitSide.bottom: //Ball fell down      
+                case Ball.HitSide.bottom: // Ball fell down      
                     ball.FallDown();
                     break;
-                case Ball.hitSide.left:
+                case Ball.HitSide.left:
                     ball.xSpeed = -ball.xSpeed;
                     break;
-                case Ball.hitSide.right:
+                case Ball.HitSide.right:
                     ball.xSpeed = -ball.xSpeed;
                     break;
             }
@@ -114,10 +114,10 @@ namespace DespatShooter
             justReflected = true;
 
             float paddleMiddle = (player.x + player.destinationRectangle.Width / 2);
-            float ballMiddle = (ball.x + ball.destinationRectangle.Width / 2);
+            float ballMiddle = (ball.x + (ball.destinationRectangle.Width / 2));
 
             float reflectionFactor = (paddleMiddle - ballMiddle) / 100;
-            float xChange = ball.maxSpeed - ball.maxSpeed * (1 - Math.Abs(reflectionFactor));
+            float xChange = ball.maxSpeed - (ball.maxSpeed * (1 - Math.Abs(reflectionFactor)));
             ball.ySpeed = -ball.maxSpeed + xChange;
 
             if (reflectionFactor > 0) ball.xSpeed = xChange;

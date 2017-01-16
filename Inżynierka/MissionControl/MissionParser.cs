@@ -31,7 +31,13 @@ namespace DespatShooter
                 texture = node.Attributes["texture"].InnerText;
                 x = Int32.Parse(node.Attributes["x"].InnerText);
                 y = Int32.Parse(node.Attributes["y"].InnerText);
-                IBrick brick = new Brick(game);
+                IBrick brick;
+                if(node.Attributes["imported"] != null)
+                    if (Int32.Parse(node.Attributes["imported"].InnerText) == 1)
+                            brick = new BrickImportedAdapter(game);
+                    else brick = new Brick(game);
+                else brick = new Brick(game);
+
                 brick.Initialize(texture, x, y);
                 brick.Subscribe(bWall);
                 brick.Subscribe(game.achievements);
@@ -49,9 +55,9 @@ namespace DespatShooter
 
                 wall.Add(brick);
             }
+
             bWall.Initialize(wall);
-            game.activeMission.bricks = bWall;
-            game.activeMission.Initialize();
+            game.activeMission.Initialize(bWall);
             game.currentGameState = DespatBreakout.GameState.Mission;
 
         }

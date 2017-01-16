@@ -7,5 +7,8 @@
     <File>C:/Inżynierka/Inżynierka/Content/Fonts/MainMenu.spritefont</File>
     <File>C:/Inżynierka/Inżynierka/Content/Graphics/greySheet.png</File>
     <File>C:/Inżynierka/Inżynierka/Content/Graphics/assets.png</File>
+    <File>C:/Inżynierka/Inżynierka/Content/Graphics/BrickStone.png</File>
+    <File>C:/Inżynierka/Inżynierka/Content/Graphics/BrickNormal.png</File>
+    <File>C:/Inżynierka/Inżynierka/Content/Graphics/BrickShadow.png</File>
   </SourceFiles>
 </SourceFileCollection>

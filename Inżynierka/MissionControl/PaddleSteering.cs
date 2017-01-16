@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace DespatShooter
 {
-    class PlayerSteering
+    class PaddleSteering
     {
         Paddle player;
         GameTime previousGameTime;
         int delta, max;
 
-        public PlayerSteering(Paddle player)
+        public PaddleSteering(Paddle player)
         {
             this.player = player;
             delta = 0; max = 0;
@@ -37,6 +37,10 @@ namespace DespatShooter
             previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
         }
 
+        public void ResetGameTime(GameTime gameTime)
+        {
+            previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
+        }
 
 
 

@@ -10,3 +10,6 @@ C:\Inżynierka\Inżynierka\obj\x86\Debug\Inżynierka.pdb
 C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Fonts\MainMenu.xnb
 C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Graphics\greySheet.xnb
 C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Graphics\assets.xnb
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Graphics\BrickNormal.xnb
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Graphics\BrickShadow.xnb
+C:\Inżynierka\Inżynierka\bin\DesktopGL\x86\Debug\Content\Graphics\BrickStone.xnb

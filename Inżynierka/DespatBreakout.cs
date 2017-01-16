@@ -17,8 +17,10 @@ namespace DespatShooter
         private static DespatBreakout instance;
 
         GraphicsDeviceManager graphics;
-        public SpriteBatch spriteBatch;
+        MenuMain menu;
+        MenuMissions missionsMenu;
 
+        public SpriteBatch spriteBatch;
 
         public XmlDocument buttonTexturesXML = new XmlDocument();
         public TextureSheet buttonTextures;
@@ -29,21 +31,14 @@ namespace DespatShooter
         public KeyboardState previousKeyboardState;
 
         public GameTime currentGameTime;
-
-        public enum GameState
-        {
-            MainMenu, Mission, Achievements, MissionChoice, Tutorial, Exit
-        }
-        public GameState currentGameState = GameState.MainMenu;
-
-        MenuMain menu;
-        MenuMissions missionsMenu;
         public MissionParser missionParser;
         public MissionScreen activeMission;
+        public MissionSave missionSave; 
         public XmlDocument missionsXML = new XmlDocument();
         public AchievementsManager achievements;
         public XmlDocument achievementsXML = new XmlDocument();
         public Random rand = new Random();
+        public GameState currentGameState = GameState.MainMenu;
 
         private DespatBreakout()
         {
@@ -51,6 +46,12 @@ namespace DespatShooter
             graphics.SynchronizeWithVerticalRetrace = false;
             Content.RootDirectory = "Content";
         }
+
+        public enum GameState
+        {
+            MainMenu, Mission, Achievements, MissionChoice, Tutorial, Exit
+        }
+
 
         public static DespatBreakout Instance
         {
@@ -66,6 +67,10 @@ namespace DespatShooter
 
         protected override void Initialize()
         {
+            missionParser = new MissionParser(this);
+            activeMission = new MissionScreen(this);
+            missionSave = new MissionSave(this);
+
             buttonTexturesXML.Load("..\\..\\..\\..\\Content\\Graphics\\greySheet.xml");
             buttonTextures = new TextureSheet(buttonTexturesXML);
             gameTexturesXML.Load("..\\..\\..\\..\\Content\\Graphics\\assetsSheet.xml");
@@ -79,10 +84,6 @@ namespace DespatShooter
 
             achievementsXML.Load("..\\..\\..\\..\\Content\\achievements.xml");
             achievements = new AchievementsManager(achievementsXML);
-
-            missionParser = new MissionParser(this);
-            activeMission = new MissionScreen(this);
-            
 
             LoadContent();
 
@@ -108,7 +109,16 @@ namespace DespatShooter
         {
             currentGameTime = gameTime;
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                if (currentGameState == GameState.Mission)
+                {
+                    missionSave.SaveMissionState(activeMission);
+                    missionsMenu = new MenuMissions(this);
+                    missionsMenu.Initialize(missionsXML);
+                }
+
                 currentGameState = GameState.MainMenu;
+            }
 
             previousKeyboardState = currentKeyboardState;
             currentKeyboardState = Keyboard.GetState();

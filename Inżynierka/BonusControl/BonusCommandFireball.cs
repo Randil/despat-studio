@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace DespatShooter
 {
-    class BonusFireball : Bonus
+    class BonusCommandFireball : IBonusCommand
     {
-        public BonusFireball(DespatBreakout game, Paddle player) : base(game, player)
+        DespatBreakout game;
+        Paddle player;
+        public BonusCommandFireball(DespatBreakout game, Paddle player)
         {
             this.player = player;
             this.game = game;
         }
 
-        public override void GrantBonus()
+        public void GrantBonus()
         {
             Ball ball = game.activeMission.balls[0];
             ball.textureName = "ball_big.png";
@@ -25,7 +26,6 @@ namespace DespatShooter
 
             ball.collisionStrategy = new StrategyFireball(game.activeMission.bricks, ball, game.activeMission.player);
 
-            game.activeMission.BonusCollected(this);
         }
     }
 }

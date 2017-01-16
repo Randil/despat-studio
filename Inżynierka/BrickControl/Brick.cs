@@ -29,7 +29,7 @@ namespace DespatShooter
             foreach (IBrickObserver o in observers)
                 o.BrickDestroyed(brick);
 
-            //TODO: Visual or sound effect?
+            // TODO: Visual or sound effect?
         }
 
         public void Hit(IBrick brick)
@@ -47,12 +47,12 @@ namespace DespatShooter
             observers.Remove(observer);
         }
 
-         new public void LoadContent()
+         public new void LoadContent()
         {
             base.LoadContent();
         }
 
-           public void Initialize(String textureName, int x, int y)
+           public void Initialize(string textureName, int x, int y)
         {
 
             LoadContent();

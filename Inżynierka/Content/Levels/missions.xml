@@ -5,6 +5,7 @@
   <level file="level3.xml" name="Test Level" bestTime="99999"/>
   <level file="level4.xml" name="Hard wall" bestTime="99999"/>
   <level file="level5.xml" name="Surprises, surprises" bestTime="99999"/>
+  <level file="level6.xml" name="Another test level..." bestTime="99999"/>
 
 </root>
 

@@ -19,23 +19,25 @@ namespace DespatShooter
         GameTime previousGameTime;
         string textureName;
         float ySpeed = 200f;
-        int delta;
+        float delta;
 
         public Bonus(DespatBreakout game, Paddle player) : base(game)
         {
             this.player = player;
             this.game = game;
         }
-        public virtual void GrantBonus()
+
+        public virtual void CollectBonus()
         {
 
         }
 
-        new public void LoadContent()
+        public new void LoadContent()
         {
             base.LoadContent();
         }
-        public void Initialize(String textureName, int x, int y)
+
+        public void Initialize(string textureName, int x, int y)
         {
             LoadContent();
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
@@ -46,12 +48,13 @@ namespace DespatShooter
             destinationRectangle = new Rectangle(x, y, sourceRectangle.Width, sourceRectangle.Height);
             previousGameTime = new GameTime();
         }
-        override public void Update(GameTime gameTime)
+
+        public override void Update(GameTime gameTime)
         {
             if (destinationRectangle.Intersects(player.destinationRectangle))
-                GrantBonus();
+                CollectBonus();
 
-            float delta = gameTime.TotalGameTime.Milliseconds - previousGameTime.TotalGameTime.Milliseconds;
+            delta = gameTime.TotalGameTime.Milliseconds - previousGameTime.TotalGameTime.Milliseconds;
             previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
 
             if (delta < 0) delta = 1000 + delta;
@@ -62,7 +65,8 @@ namespace DespatShooter
 
             base.Update(gameTime);
         }
-        override public void Draw(GameTime gameTime)
+
+        public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
             spriteBatch.Draw(game.gameTextures.textureSheet,
@@ -72,6 +76,12 @@ namespace DespatShooter
             spriteBatch.End();
             base.Draw(gameTime);
         }
+
+        public void ResetGameTime(GameTime gameTime)
+        {
+            previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
+        }
+
 
     }
 }
