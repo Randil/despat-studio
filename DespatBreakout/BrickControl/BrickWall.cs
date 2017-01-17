@@ -1,4 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class represents all the bricks in the inividual level.
+ * It could be also represented only with list of bricks in the MissionScreen class, but passing it as an argument
+ * and handling Update and Draw methods seem to be more elegant this way.
+ * BrickWall is registered as an observer of its bricks. It is used to remove a brick from BrickWall after it is destroyed 
+ * (collision strategies work on particular bricks, so it is a convenient solution).
+ * 
+ * Design patterns: Observer
+ ---------------------------------------------------------------------------------------------------------*/
+
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;

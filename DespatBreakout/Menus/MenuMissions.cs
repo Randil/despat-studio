@@ -1,4 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class menu of choosing mission. It is parsing XML with level list, and prepares buttons according to it.
+ * Oprionally if a saved game exists, it adds aditional button to continue the mission.
+ * 
+ * Design patterns: Factory, Memento
+ ---------------------------------------------------------------------------------------------------------*/
+
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;

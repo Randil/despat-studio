@@ -1,4 +1,13 @@
-﻿using System;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class defines player controlled paddle, handles its updating and drawing.
+ * 
+ * Design patterns: Component
+ ---------------------------------------------------------------------------------------------------------*/
+
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -13,6 +22,8 @@ namespace DespatShooter
         public float movementSpeed = 500.0f;
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
+
+        //Steering component for player paddle
         PaddleSteering steering;
 
         public Paddle(DespatBreakout game) : base(game)

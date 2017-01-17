@@ -1,4 +1,21 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class contains main game loop. 
+ * It was written according to instructions from monogame documentation - see more at http://www.monogame.net/.
+ * Class handles loading and unloading content, initializes all the menus, keeps instances of most of the game components.
+ * 
+ * This is a singleton, there can be only one DespatBreakout class in program. This also means that every class can gain
+ * access to its public members, calling DespatBreakout.Instance.
+ * This is a state machine, which means its Draw and Update methods behave differently whether GameState is surrently set
+ * as MainMenu, Mission, MissionChoice etc.
+ * 
+ * 
+ * Design patterns: GameLoop, UpdateMethod, Singleton, State
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -8,10 +25,6 @@ using System.Xml;
 
 namespace DespatShooter
 {
-    //This class contains main game loop and handles user input. Main menu and mission class are initialized here.
-
-    //Pattern - Game Loop, see more at http://gameprogrammingpatterns.com/game-loop.html
-
     public class DespatBreakout : Game
     {
         private static DespatBreakout instance;
@@ -67,35 +80,34 @@ namespace DespatShooter
 
         protected override void Initialize()
         {
+            LoadContent();
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
             missionParser = new MissionParser(this);
             activeMission = new MissionScreen(this);
             missionSave = new MissionSave(this);
 
-            buttonTexturesXML.Load("..\\..\\..\\..\\Content\\Graphics\\greySheet.xml");
+            
             buttonTextures = new TextureSheet(buttonTexturesXML);
-            gameTexturesXML.Load("..\\..\\..\\..\\Content\\Graphics\\assetsSheet.xml");
             gameTextures = new TextureSheet(gameTexturesXML);
-            menu = new MenuMain(this);
-            menu.Initialize();
-
-            missionsXML.Load("..\\..\\..\\..\\Content\\Levels\\missions.xml");
-            missionsMenu = new MenuMissions(this);
-            missionsMenu.Initialize(missionsXML);
-
-            achievementsXML.Load("..\\..\\..\\..\\Content\\achievements.xml");
             achievements = new AchievementsManager(achievementsXML);
 
-            LoadContent();
-
+            menu = new MenuMain(this);
+            menu.Initialize();
+            missionsMenu = new MenuMissions(this);
+            missionsMenu.Initialize(missionsXML);
         }
 
         /// LoadContent will be called once per game and is the place to load all of your content.
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            buttonTexturesXML.Load("..\\..\\..\\..\\Content\\Graphics\\greySheet.xml");
+            gameTexturesXML.Load("..\\..\\..\\..\\Content\\Graphics\\assetsSheet.xml");
+            missionsXML.Load("..\\..\\..\\..\\Content\\Levels\\missions.xml");
+            achievementsXML.Load("..\\..\\..\\..\\Content\\achievements.xml");
         }
-        /// UnloadContent will be called once per game and is the place to unload game-specific content.
 
+        /// UnloadContent will be called once per game and is the place to unload game-specific content.
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
@@ -104,7 +116,6 @@ namespace DespatShooter
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-
         protected override void Update(GameTime gameTime)
         {
             currentGameTime = gameTime;

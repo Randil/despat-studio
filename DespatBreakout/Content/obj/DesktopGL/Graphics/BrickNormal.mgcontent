@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Inżynierka/Inżynierka/Content/Graphics/BrickNormal.png</SourceFile>
+  <SourceFile>C:/Inżynierka/DespatBreakout/Content/Graphics/BrickNormal.png</SourceFile>
   <SourceTime>2017-01-15T13:59:21.2485994+01:00</SourceTime>
-  <DestFile>C:/Inżynierka/Inżynierka/Content/bin/DesktopGL/Graphics/BrickNormal.xnb</DestFile>
-  <DestTime>2017-01-15T14:32:03.1750989+01:00</DestTime>
+  <DestFile>C:/Inżynierka/DespatBreakout/Content/bin/DesktopGL/Graphics/BrickNormal.xnb</DestFile>
+  <DestTime>2017-01-17T12:07:38.6275462+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T08:36:08+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

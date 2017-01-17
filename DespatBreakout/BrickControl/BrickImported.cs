@@ -7,7 +7,15 @@
  * If you use this software in another project, you agree to mention the author and source.
  ---------------------------------------------------------------------------------------------------------*/
 
-// Some original content of this class has been commented or modified in order to stay independent from rest of original source classes
+/* --------------------------------------------------------------------------------------------------------
+ * Note from the project author:
+ * Date: 16/01/2016
+ * 
+ * Some original content of this class has been commented or modified in order to stay independent from rest of original source classes.
+ * 
+ * Design patterns: 
+ ---------------------------------------------------------------------------------------------------------*/
+
 
 using System;
 using System.Collections.Generic;
@@ -73,8 +81,6 @@ namespace DespatShooter
         /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
-
-
             base.Update(gameTime);
         }
         /// <summary>

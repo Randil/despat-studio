@@ -1,4 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class represents the screen drawn over MissionScreen after level finishes.
+ * 
+ * Design patterns: 
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class represents a single tecture from TextureSheet.
+ * 
+ * Design patterns:
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

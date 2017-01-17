@@ -1,4 +1,14 @@
-﻿using System;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class represents a collision strategy with normal behaviour 
+ * (reflecting from paddle, walls and bricks, ability to fall down).
+ * 
+ * Design patterns: Strategy
+ ---------------------------------------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

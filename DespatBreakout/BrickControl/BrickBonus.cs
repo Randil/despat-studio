@@ -1,4 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class represents a brick extension, making it spawn a bonus after being destroyed.
+ * Brick decorators can be used in any order.
+ * 
+ * Design patterns: Decorator
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

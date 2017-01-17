@@ -1,4 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This is an adapter for BrickImported class. It serves as a base (equivalent for Brick) for bricks decorators classes.
+ * 
+ * Design patterns: Adapter, Decorator, Observer
+ ---------------------------------------------------------------------------------------------------------*/
+
+
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +55,7 @@ namespace DespatShooter
         {
             BrickImported.LoadTextures(game);
         }
-        public void Initialize(String textureName, int x, int y)
+        public void Initialize(string textureName, int x, int y)
         {
             LoadContent();
             baseBrick.Position = new Vector2(x, y);

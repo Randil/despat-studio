@@ -1,4 +1,14 @@
-﻿using System;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class represents a collision strategy used for testing purpose 
+ * (reflecting from paddle, walls and floor, not interfering with bricks).
+ * 
+ * Design patterns: Strategy
+ ---------------------------------------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

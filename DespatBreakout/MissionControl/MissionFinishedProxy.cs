@@ -1,4 +1,14 @@
-﻿using System;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class is a logging proxy, called after mission finishes. It passes information about finished mission to AchievementsManager
+ * and initializes MissionFinishedScreen.
+ * 
+ * Design patterns: Proxy
+ ---------------------------------------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

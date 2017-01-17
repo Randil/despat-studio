@@ -1,4 +1,13 @@
-﻿using System;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This interface is implemented by all collision strategies
+ * 
+ * Design patterns: Strategy
+ ---------------------------------------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

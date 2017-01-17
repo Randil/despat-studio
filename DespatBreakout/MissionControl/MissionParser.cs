@@ -1,4 +1,13 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class is parsing XML mission scenarios to prepare bricks for MissionScreen.
+ * 
+ * Design patterns: Interpreter, Factory
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;

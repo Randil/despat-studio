@@ -1,15 +1,18 @@
-﻿using System;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This is the main entry point for the application.
+ * 
+ * Design patterns:
+ ---------------------------------------------------------------------------------------------------------*/
+
+using System;
 
 namespace DespatShooter
 {
-    /// <summary>
-    /// The main class.
-    /// </summary>
     public static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {

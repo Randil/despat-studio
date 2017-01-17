@@ -1,4 +1,16 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class represents a ball, handles its drawing and updating.
+ * Ball contains a ICollisionStrategyComponent, which is implemented separately.
+ * There is a posibility of swapping a default collision detection strategy with another one.
+ * Ball can be duplicated in-game, so it contains a method which returns its exact copy.
+ * 
+ * Design patterns: Component, Strategy, Prototype
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;

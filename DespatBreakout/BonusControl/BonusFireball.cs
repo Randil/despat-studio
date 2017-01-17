@@ -1,4 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class represents a bonus changing one of the balls into a FireBall, altering its appearance and collison strategy.
+ * Instead of directly changing a ball, it creates a BonusCommand, which is afterwards handled by MissionScreen.
+ * This approach allows the mission to be easly initialized with a set of bonuses.
+ * 
+ * Design patterns: Command
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,11 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Inżynierka/Inżynierka/Content/Fonts/MainMenu.spritefont</File>
-    <File>C:/Inżynierka/Inżynierka/Content/Graphics/greySheet.png</File>
-    <File>C:/Inżynierka/Inżynierka/Content/Graphics/assets.png</File>
-    <File>C:/Inżynierka/Inżynierka/Content/Graphics/BrickStone.png</File>
-    <File>C:/Inżynierka/Inżynierka/Content/Graphics/BrickNormal.png</File>
-    <File>C:/Inżynierka/Inżynierka/Content/Graphics/BrickShadow.png</File>
+    <File>C:/Inżynierka/DespatBreakout/Content/Fonts/MainMenu.spritefont</File>
+    <File>C:/Inżynierka/DespatBreakout/Content/Graphics/greySheet.png</File>
+    <File>C:/Inżynierka/DespatBreakout/Content/Graphics/assets.png</File>
+    <File>C:/Inżynierka/DespatBreakout/Content/Graphics/BrickStone.png</File>
+    <File>C:/Inżynierka/DespatBreakout/Content/Graphics/BrickNormal.png</File>
+    <File>C:/Inżynierka/DespatBreakout/Content/Graphics/BrickShadow.png</File>
   </SourceFiles>
 </SourceFileCollection>

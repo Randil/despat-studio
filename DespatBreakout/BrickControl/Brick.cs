@@ -1,4 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This is a class representing generic Brick. It is fully functional, and serves as a base for brick decorators.
+ * Class contains definitions for drawing a brick, updating it after being hit or destroyed, handling subscribers interested
+ * in information about brick (BrickWall containing the individual brick and AchievementManager).
+ * 
+ * Design patterns: Decorator, Observer
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;

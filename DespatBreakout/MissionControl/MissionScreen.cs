@@ -1,4 +1,16 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class represents a game level. It contains instances of balls, player paddle, bricks and bonuses.
+ * Class handles delay at the start of the mission.
+ * MissionScreen can be initialized via a MissionSave object or only with a BrickWall (then it sets default values for other components).
+ * 
+ * 
+ * Design patterns: Memento, Command
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;

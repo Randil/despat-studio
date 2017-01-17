@@ -1,4 +1,14 @@
-﻿using System;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class contains information about player achievements throughout the game. 
+ * Class shows to approaches to tracking achievements: being an Observer of certain classes, and using  a logging Proxy.
+ * 
+ * Design patterns: Proxy, Observer
+ ---------------------------------------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

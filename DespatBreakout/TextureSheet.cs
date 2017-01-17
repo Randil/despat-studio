@@ -1,4 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class is a parser of texture sheets from the form of XML into a list of texture coordinates. 
+ * It allows multiple textures to be stored within the same file and accessed by their names.
+ * 
+ * Design patterns: Interpreter, Factory
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;

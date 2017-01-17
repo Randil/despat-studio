@@ -1,4 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class represents a brick extension of making it invisible.
+ * Brick decorators can be used in any order.
+ * 
+ * Design patterns: Decorator
+ ---------------------------------------------------------------------------------------------------------*/
+
+
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +55,7 @@ namespace DespatShooter
             baseBrick.LoadContent();
         }
 
-        public void Initialize(String textureName, int x, int y)
+        public void Initialize(string textureName, int x, int y)
         {
             baseBrick.Initialize(textureName, x, y);
         }
