@@ -22,6 +22,7 @@ namespace DespatBreakout
         {
 
         }
+
         public void MissionFinished(double time, MissionFinishedScreen finishScreen, string text)
         {
             DespatBreakout.Instance.achievements.MissionFinished(time);

@@ -6,19 +6,19 @@
  * 
  * Design patterns: Command
  ---------------------------------------------------------------------------------------------------------*/
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     class BonusCommandSmallPaddle : IBonusCommand
     {
         DespatBreakout game;
         Paddle player;
+
         public BonusCommandSmallPaddle(DespatBreakout game, Paddle player)
         {
             this.player = player;
@@ -27,13 +27,13 @@ namespace DespatBreakout
 
         public void GrantBonus()
         {
-            player.sourceRectangle = game.gameTextures.GetTextureRectangle("paddle_small.png");
-            player.texture = "paddle_small.png";
-            int shift = player.sourceRectangle.Width - player.destinationRectangle.Width;
-            player.x -= shift / 2;
-            player.destinationRectangle.X -= shift / 2;
-            player.destinationRectangle.Height = player.sourceRectangle.Height;
-            player.destinationRectangle.Width = player.sourceRectangle.Width; 
+            this.player.sourceRectangle = this.game.gameTextures.GetTextureRectangle("paddle_small.png");
+            this.player.texture = "paddle_small.png";
+            int shift = this.player.sourceRectangle.Width - this.player.destinationRectangle.Width;
+            this.player.x -= shift / 2;
+            this.player.destinationRectangle.X -= shift / 2;
+            this.player.destinationRectangle.Height = this.player.sourceRectangle.Height;
+            this.player.destinationRectangle.Width = this.player.sourceRectangle.Width; 
         }
     }
 }

@@ -26,29 +26,30 @@ namespace DespatBreakout
         public PaddleSteering(Paddle player)
         {
             this.player = player;
-            delta = 0; max = 0;
-            previousGameTime = new GameTime();
+            this.delta = 0; 
+            this.max = 0;
+            this.previousGameTime = new GameTime();
         }
 
         public void Update(GameTime gameTime)
         {
-           max = player.game.GraphicsDevice.Viewport.Width - player.sourceRectangle.Width;
-           delta = gameTime.TotalGameTime.Milliseconds - previousGameTime.TotalGameTime.Milliseconds;
-           if (delta < 0) delta = 1000 + delta;
-           if (player.game.currentKeyboardState.IsKeyDown(Keys.Left)) 
-                 player.x -= (player.movementSpeed * delta / 1000);
-           if (player.game.currentKeyboardState.IsKeyDown(Keys.Right)) 
-                 player.x += (player.movementSpeed * delta / 1000);
+            this.max = this.player.game.GraphicsDevice.Viewport.Width - this.player.sourceRectangle.Width;
+           this.delta = gameTime.TotalGameTime.Milliseconds - this.previousGameTime.TotalGameTime.Milliseconds;
+           if (this.delta < 0) this.delta = 1000 + this.delta;
+           if (this.player.game.currentKeyboardState.IsKeyDown(Keys.Left))
+               this.player.x -= (this.player.movementSpeed * this.delta / 1000);
+           if (this.player.game.currentKeyboardState.IsKeyDown(Keys.Right))
+               this.player.x += (this.player.movementSpeed * this.delta / 1000);
 
-            if(player.x < 0) player.x = 0;
-            if(player.x  > max) player.x = max;
+           if (this.player.x < 0) this.player.x = 0;
+            if (this.player.x > this.max) this.player.x = this.max;
 
-            previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
+            this.previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
         }
 
         public void ResetGameTime(GameTime gameTime)
         {
-            previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
+            this.previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
         }
 
 

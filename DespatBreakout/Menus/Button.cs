@@ -6,24 +6,23 @@
  * 
  * Design patterns: 
  ---------------------------------------------------------------------------------------------------------*/
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     class Button : Microsoft.Xna.Framework.DrawableGameComponent
     {
         public SpriteFont buttonFont;
         public int x;
         public int y;
-        public String buttonText;
-        public String textureName;
+        public string buttonText;
+        public string textureName;
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
         public DespatBreakout.GameState clickDestination;
@@ -41,12 +40,9 @@ namespace DespatBreakout
             this.helper = new RectangleFontAdjuster();
         }
 
-        protected override void LoadContent()
-        {
-            base.LoadContent();
-        }
+        
 
-        public void Initialize(SpriteFont font, int x, int y, String text, String textureName)
+        public void Initialize(SpriteFont font, int x, int y, string text, string textureName)
         {
 
             LoadContent();
@@ -73,7 +69,7 @@ namespace DespatBreakout
         {
             spriteBatch.Begin();
 
-            if(!isHoovered)
+            if (!isHoovered)
                 spriteBatch.Draw(game.buttonTextures.textureSheet, 
                 destinationRectangle, 
                 sourceRectangle, 
@@ -93,6 +89,11 @@ namespace DespatBreakout
         public virtual void Click()
         {
             game.currentGameState = clickDestination;
+        }
+
+        protected override void LoadContent()
+        {
+            base.LoadContent();
         }
     }
 }

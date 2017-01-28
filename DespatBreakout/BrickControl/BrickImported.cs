@@ -6,7 +6,6 @@
  * You bear the risk of using it. The author give no express warranties, guarantees or conditions.
  * If you use this software in another project, you agree to mention the author and source.
  ---------------------------------------------------------------------------------------------------------*/
-
 /* --------------------------------------------------------------------------------------------------------
  * Note from the project author:
  * Date: 16/01/2016
@@ -15,16 +14,14 @@
  * 
  * Design patterns: 
  ---------------------------------------------------------------------------------------------------------*/
-
-
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class BrickImported : DrawableGameComponent
     {
         public Vector2 Position;
@@ -57,6 +54,7 @@ namespace DespatBreakout
         {
             mGame = pGame;
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -64,6 +62,7 @@ namespace DespatBreakout
         {
             this.RemainingHits = this.InitialHits;
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -75,6 +74,7 @@ namespace DespatBreakout
             mBrickTextures.Add(pGame.Content.Load<Texture2D>("Graphics\\BrickStone"));
             mBrickTextures.Add(pGame.Content.Load<Texture2D>("Graphics\\BrickShadow"));
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -83,6 +83,7 @@ namespace DespatBreakout
         {
             base.Update(gameTime);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -91,8 +92,8 @@ namespace DespatBreakout
         {
             this.mDrawingRectangle = new Rectangle((int)Position.X + pGameRectangle.X, (int)Position.Y + pGameRectangle.Y, (int)Size.X, (int)Size.Y);
             this.mShadowDrawingRectangle = new Rectangle((int)Position.X + 15 + pGameRectangle.X, (int)Position.Y + 15 + pGameRectangle.Y, (int)Size.X, (int)Size.Y);
-
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -112,6 +113,7 @@ namespace DespatBreakout
 
             base.Draw(gameTime);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -125,6 +127,5 @@ namespace DespatBreakout
 
            // mGame.mVaus.mScore += this.Score;
         }
-
     }
 }

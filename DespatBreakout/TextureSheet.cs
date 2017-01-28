@@ -28,9 +28,9 @@ namespace DespatBreakout
 
         public TextureSheet(XmlDocument textureAtlas)
         {
-            textures = new List<TextureSheetElement> { };
-            basePath = textureAtlas.DocumentElement.ChildNodes[0].Attributes["imagePath"].InnerText;
-            textureSheet = DespatBreakout.Instance.Content.Load<Texture2D>("Graphics\\"+ basePath );
+            this.textures = new List<TextureSheetElement> { };
+            this.basePath = textureAtlas.DocumentElement.ChildNodes[0].Attributes["imagePath"].InnerText;
+            this.textureSheet = DespatBreakout.Instance.Content.Load<Texture2D>("Graphics\\" + this.basePath);
             string name; 
             int x, y, width, height;
             foreach (XmlNode node in textureAtlas.DocumentElement.ChildNodes[0].ChildNodes)
@@ -40,7 +40,7 @@ namespace DespatBreakout
                 y = Int32.Parse(node.Attributes["y"].InnerText);
                 width = Int32.Parse(node.Attributes["width"].InnerText);
                 height = Int32.Parse(node.Attributes["height"].InnerText);
-                textures.Add(new TextureSheetElement(name, x, y, width, height));
+                this.textures.Add(new TextureSheetElement(name, x, y, width, height));
             }
 
         }
@@ -48,7 +48,7 @@ namespace DespatBreakout
         public Rectangle GetTextureRectangle(string name)
         {
             Rectangle result = new Rectangle();
-            foreach(TextureSheetElement t in textures)
+            foreach (TextureSheetElement t in this.textures)
             {
                 if (t.name.Equals(name))
                     result = t.sourceRectangle;
@@ -57,7 +57,7 @@ namespace DespatBreakout
             {
                 return result;
             }
-            catch(System.NullReferenceException)
+            catch (System.NullReferenceException)
             {
                 System.ArgumentException argEx = new System.ArgumentException("Cannot find given texture");
                 throw argEx;

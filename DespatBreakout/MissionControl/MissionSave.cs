@@ -19,21 +19,10 @@ namespace DespatBreakout
 {
     public class MissionSave
     {
-        DespatBreakout game;
-
         public GameTime startTime;
         public double timePlayed;
         public String playerTexture;
         public float playerX, playerY;
-
-        public struct BallState
-        {
-            // In our example type of ball strategy changes along with ball texture
-            // Aditional parameters would be required if changes werent tied this way
-            public string textureName;
-            public float x, y;
-            public float xSpeed, ySpeed;
-        }
         public List<BallState> balls;
 
         // Find a balance between keeping only data which is nescessary to recreate the object
@@ -45,6 +34,17 @@ namespace DespatBreakout
 
         public bool saved;
 
+        DespatBreakout game;
+
+        public struct BallState
+        {
+            // In our example type of ball strategy changes along with ball texture
+            // Aditional parameters would be required if changes werent tied this way
+            public string textureName;
+            public float x, y;
+            public float xSpeed, ySpeed;
+        }
+
         public MissionSave(DespatBreakout game)
         {
             this.game = game;
@@ -54,7 +54,7 @@ namespace DespatBreakout
         public void SaveMissionState(MissionScreen mission)
         {
 
-            balls = new List<BallState> { };
+            this.balls = new List<BallState> { };
 
             this.startTime = mission.startTime;
             this.timePlayed = mission.time;
@@ -63,7 +63,7 @@ namespace DespatBreakout
             this.playerX = mission.player.x;
             this.playerY = mission.player.y;
 
-            foreach(Ball b in mission.balls)
+            foreach (Ball b in mission.balls)
             {
                 BallState ballState = new BallState();
                 ballState.textureName = b.textureName;

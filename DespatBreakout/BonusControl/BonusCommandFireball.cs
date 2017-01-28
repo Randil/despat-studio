@@ -6,15 +6,14 @@
  * 
  * Design patterns: Command
  ---------------------------------------------------------------------------------------------------------*/
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     class BonusCommandFireball : IBonusCommand
     {
         DespatBreakout game;
@@ -28,15 +27,14 @@ namespace DespatBreakout
 
         public void GrantBonus()
         {
-            int rand = game.rand.Next(0, game.activeMission.balls.Count() - 1);
-            Ball ball = game.activeMission.balls[rand];
+            int rand = this.game.rand.Next(0, this.game.activeMission.balls.Count() - 1);
+            Ball ball = this.game.activeMission.balls[rand];
             ball.textureName = "ball_big.png";
-            ball.sourceRectangle = game.gameTextures.GetTextureRectangle("ball_big.png");
+            ball.sourceRectangle = this.game.gameTextures.GetTextureRectangle("ball_big.png");
             ball.destinationRectangle.Height = ball.sourceRectangle.Height;
             ball.destinationRectangle.Width = ball.sourceRectangle.Width;
 
-            ball.collisionStrategy = new StrategyFireball(game.activeMission.bricks, ball, game.activeMission.player);
-
+            ball.collisionStrategy = new StrategyFireball(this.game.activeMission.bricks, ball, this.game.activeMission.player);
         }
     }
 }

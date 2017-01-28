@@ -40,7 +40,7 @@ namespace DespatBreakout
         public List<Ball> balls;
         public List<Ball> ballsToRemove;
         public List<Bonus> bonuses;
-        public  List<Bonus> bonusesToRemove;
+        public List<Bonus> bonusesToRemove;
         public List<IBonusCommand> bonusEffects;
         public List<IBonusCommand> bonusEffectsToRemove;
 
@@ -52,10 +52,7 @@ namespace DespatBreakout
             this.initializer = new MissionScreenInitializer(this);
         }
 
-        protected override void LoadContent()
-        {
-            base.LoadContent();
-        }
+        
 
         public void Initialize(BrickWall bWall)
         {
@@ -145,24 +142,27 @@ namespace DespatBreakout
             if (balls.Count == 0)
                 MissionFailed();
         }
+
         public void RemoveBonuses()
         {
-            foreach(Bonus b in bonusesToRemove)
+            foreach (Bonus b in bonusesToRemove)
                 bonuses.Remove(b);
             bonusesToRemove.Clear();
         }
+
         public void BonusCollected(Bonus bonus)
         {
             bonusesToRemove.Add(bonus);
         }
+
         public void AquireBonuses()
         {
-            foreach(IBonusCommand bonus in bonusEffects)
+            foreach (IBonusCommand bonus in bonusEffects)
             {
                 bonus.GrantBonus();
                 bonusEffectsToRemove.Add(bonus);
             }
-            foreach(IBonusCommand bonus in bonusEffectsToRemove)
+            foreach (IBonusCommand bonus in bonusEffectsToRemove)
             {
                 bonusEffects.Remove(bonus);
             }
@@ -180,6 +180,11 @@ namespace DespatBreakout
             finished = true;
             finishedProxy.MissionFinished(time, finishScreen, "You failed!");
             onGoing = false;
+        }
+
+        protected override void LoadContent()
+        {
+            base.LoadContent();
         }
 
 

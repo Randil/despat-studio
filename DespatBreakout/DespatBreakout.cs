@@ -14,17 +14,15 @@
  * 
  * Design patterns: GameLoop, UpdateMethod, Singleton, State
  ---------------------------------------------------------------------------------------------------------*/
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using System;
-using System.Xml;
-
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Xml;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+
     public class DespatBreakout : Game
     {
         public SpriteBatch spriteBatch;
@@ -120,8 +118,8 @@ namespace DespatBreakout
         {
             currentGameTime = gameTime;
 
-            //At ay given time pressing esc will result in returning to main menu
-            //If game was on run while doing this, its state will be saved
+            // At ay given time pressing esc will result in returning to main menu
+            // If game was on run while doing this, its state will be saved
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 if (currentGameState == GameState.Mission && activeMission.finished == false)
@@ -154,7 +152,8 @@ namespace DespatBreakout
                         activeMission.Update(gameTime);
                         break;
                     }
-                default : Exit(); break;
+                default : Exit();
+                    break;
             }
 
             base.Update(gameTime);
@@ -167,7 +166,7 @@ namespace DespatBreakout
 
             spriteBatch.Begin();
 
-            switch(currentGameState)
+            switch (currentGameState)
             {
                 case GameState.MainMenu:
                     {

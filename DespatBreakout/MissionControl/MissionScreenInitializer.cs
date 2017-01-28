@@ -28,74 +28,74 @@ namespace DespatBreakout
 
         public void Initialize(BrickWall bWall) //Dodać factory
         {
-            mission.spriteBatch = new SpriteBatch(mission.game.GraphicsDevice);
-            mission.onGoing = false;
-            mission.finished = false;
+            this.mission.spriteBatch = new SpriteBatch(this.mission.game.GraphicsDevice);
+            this.mission.onGoing = false;
+            this.mission.finished = false;
 
-            mission.bricks = bWall;
+            this.mission.bricks = bWall;
 
-            mission.player = new Paddle(mission.game);
-            mission.player.Initialize("paddle_medium.png",
-                (mission.game.GraphicsDevice.Viewport.Width - mission.game.gameTextures.GetTextureRectangle("paddle_medium.png").Width) / 2,
-                mission.game.GraphicsDevice.Viewport.Height - 50);
+            this.mission.player = new Paddle(this.mission.game);
+            this.mission.player.Initialize("paddle_medium.png",
+                (this.mission.game.GraphicsDevice.Viewport.Width - this.mission.game.gameTextures.GetTextureRectangle("paddle_medium.png").Width) / 2,
+                this.mission.game.GraphicsDevice.Viewport.Height - 50);
 
 
-            Ball ball = new Ball(mission.game);
-            IBallCollisionStrategy collisionStrategy = new StrategyNormal(mission.bricks, ball, mission.player);
+            Ball ball = new Ball(this.mission.game);
+            IBallCollisionStrategy collisionStrategy = new StrategyNormal(this.mission.bricks, ball, this.mission.player);
 
             ball.Initialize("ball_normal.png", collisionStrategy,
-                (mission.game.GraphicsDevice.Viewport.Width - mission.game.gameTextures.GetTextureRectangle("ball_normal.png").Width) / 2,
-                 mission.game.GraphicsDevice.Viewport.Height - 50 - mission.game.gameTextures.GetTextureRectangle("ball_normal.png").Height,
+                (this.mission.game.GraphicsDevice.Viewport.Width - this.mission.game.gameTextures.GetTextureRectangle("ball_normal.png").Width) / 2,
+                 this.mission.game.GraphicsDevice.Viewport.Height - 50 - this.mission.game.gameTextures.GetTextureRectangle("ball_normal.png").Height,
                  0f, -500f);
 
-            mission.balls = new List<Ball> { ball };
-            mission.ballsToRemove = new List<Ball> { };
-            mission.bonuses = new List<Bonus> { };
-            mission.bonusesToRemove = new List<Bonus> { };
-            mission.bonusEffects = new List<IBonusCommand> { };
-            mission.bonusEffectsToRemove = new List<IBonusCommand> { };
+            this.mission.balls = new List<Ball> { ball };
+            this.mission.ballsToRemove = new List<Ball> { };
+            this.mission.bonuses = new List<Bonus> { };
+            this.mission.bonusesToRemove = new List<Bonus> { };
+            this.mission.bonusEffects = new List<IBonusCommand> { };
+            this.mission.bonusEffectsToRemove = new List<IBonusCommand> { };
 
-            mission.startTime = new GameTime();
-            mission.delay = 1.5d;
-            mission.finishScreen = new MissionFinishedScreen(mission.game);
-            mission.finishedProxy = new MissionFinishedProxy();
+            this.mission.startTime = new GameTime();
+            this.mission.delay = 1.5d;
+            this.mission.finishScreen = new MissionFinishedScreen(this.mission.game);
+            this.mission.finishedProxy = new MissionFinishedProxy();
         }
 
         public void Initialize(MissionSave save)
         {
-            mission.spriteBatch = new SpriteBatch(mission.game.GraphicsDevice);
-            mission.onGoing = true;
-            mission.finished = false;
+            this.mission.spriteBatch = new SpriteBatch(this.mission.game.GraphicsDevice);
+            this.mission.onGoing = true;
+            this.mission.finished = false;
 
-            mission.bricks = save.bricks;
+            this.mission.bricks = save.bricks;
 
-            mission.player = new Paddle(mission.game);
-            mission.player.Initialize(save.playerTexture, save.playerX, save.playerY);
+            this.mission.player = new Paddle(this.mission.game);
+            this.mission.player.Initialize(save.playerTexture, save.playerX, save.playerY);
 
-            mission.balls = new List<Ball> { };
+            this.mission.balls = new List<Ball> { };
 
             foreach (MissionSave.BallState ballState in save.balls)
             {
                 IBallCollisionStrategy collisionStrategy;
-                Ball ball = new Ball(mission.game);
+                Ball ball = new Ball(this.mission.game);
                 if (ballState.textureName.Equals("ball_big.png"))
-                    collisionStrategy = new StrategyFireball(mission.bricks, ball, mission.player);
-                else collisionStrategy = new StrategyNormal(mission.bricks, ball, mission.player);
+                    collisionStrategy = new StrategyFireball(this.mission.bricks, ball, this.mission.player);
+                else collisionStrategy = new StrategyNormal(this.mission.bricks, ball, this.mission.player);
                 ball.Initialize(ballState.textureName, collisionStrategy, (int)ballState.x, (int)ballState.y, ballState.xSpeed, ballState.ySpeed);
-                mission.balls.Add(ball);
+                this.mission.balls.Add(ball);
             }
 
-            mission.ballsToRemove = new List<Ball> { };
-            mission.bonuses = save.bonuses;
-            mission.bonusesToRemove = new List<Bonus> { };
-            mission.bonusEffects = save.bonusEffects;
-            mission.bonusEffectsToRemove = new List<IBonusCommand> { };
+            this.mission.ballsToRemove = new List<Ball> { };
+            this.mission.bonuses = save.bonuses;
+            this.mission.bonusesToRemove = new List<Bonus> { };
+            this.mission.bonusEffects = save.bonusEffects;
+            this.mission.bonusEffectsToRemove = new List<IBonusCommand> { };
 
-            mission.startTime = save.startTime;
-            mission.time = save.timePlayed;
-            mission.delay = mission.time + 1.5d;
-            mission.finishScreen = new MissionFinishedScreen(mission.game);
-            mission.finishedProxy = new MissionFinishedProxy();
+            this.mission.startTime = save.startTime;
+            this.mission.time = save.timePlayed;
+            this.mission.delay = this.mission.time + 1.5d;
+            this.mission.finishScreen = new MissionFinishedScreen(this.mission.game);
+            this.mission.finishedProxy = new MissionFinishedProxy();
         }
 
     }

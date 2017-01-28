@@ -6,18 +6,17 @@
  * 
  * Design patterns: 
  ---------------------------------------------------------------------------------------------------------*/
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     class ButtonMission : Button
     {
         XmlDocument missionScenario;
@@ -49,8 +48,7 @@ namespace DespatBreakout
             }
             else
             {
-                DespatBreakout.Instance.activeMission.
-                Initialize(DespatBreakout.Instance.missionParser.CreateMission(missionScenario));
+                DespatBreakout.Instance.activeMission.Initialize(DespatBreakout.Instance.missionParser.CreateMission(missionScenario));
                 DespatBreakout.Instance.currentGameState = DespatBreakout.GameState.Mission;
             }
         }

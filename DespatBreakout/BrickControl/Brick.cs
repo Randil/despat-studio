@@ -8,17 +8,16 @@
  * 
  * Design patterns: Decorator, Observer
  ---------------------------------------------------------------------------------------------------------*/
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class Brick : Microsoft.Xna.Framework.DrawableGameComponent, IBrick
     {
         public Rectangle destinationRectangle;
@@ -97,6 +96,5 @@ namespace DespatBreakout
         {
             return this.destinationRectangle;
         }
-
     }
 }

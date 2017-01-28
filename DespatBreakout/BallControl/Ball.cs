@@ -9,17 +9,16 @@
  * 
  * Design patterns: Component, Strategy, Prototype
  ---------------------------------------------------------------------------------------------------------*/
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class Ball : Microsoft.Xna.Framework.DrawableGameComponent
     {
         public float x, y;
@@ -35,7 +34,7 @@ namespace DespatBreakout
         DespatBreakout game;
         SpriteBatch spriteBatch;
         GameTime previousGameTime;
-        int delta; //Time passed between the frames
+        int delta; // Time passed between the frames
 
 
           public Ball(DespatBreakout game) : base(game)
@@ -67,10 +66,7 @@ namespace DespatBreakout
             return ball;
         }
 
-           protected override void LoadContent()
-        {
-            base.LoadContent();
-        }
+           
 
            public void Initialize(string textureName, IBallCollisionStrategy collisionStrategy, int x, int y, float xSpeed, float ySpeed)
         {
@@ -122,5 +118,9 @@ namespace DespatBreakout
             previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
         }
 
+        protected override void LoadContent()
+        {
+            base.LoadContent();
+        }
     }
 }

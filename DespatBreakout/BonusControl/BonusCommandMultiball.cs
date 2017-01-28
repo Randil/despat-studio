@@ -6,19 +6,19 @@
  * 
  * Design patterns: Command, Prototype
  ---------------------------------------------------------------------------------------------------------*/
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     class BonusCommandMultiball : IBonusCommand
     {
         DespatBreakout game;
         Paddle player;
+
         public BonusCommandMultiball(DespatBreakout game, Paddle player)
         {
             this.player = player;
@@ -28,7 +28,7 @@ namespace DespatBreakout
         public void GrantBonus()
         {
             List<Ball> ballsToAdd = new List<Ball> { };
-            foreach (Ball ball in game.activeMission.balls)
+            foreach (Ball ball in this.game.activeMission.balls)
             {
                 ballsToAdd.Add(ball.Duplicate());
                 ball.xSpeed += 50;
@@ -39,7 +39,7 @@ namespace DespatBreakout
             {
                 ball.xSpeed -= 50;
                 ball.ySpeed += 50;
-                game.activeMission.balls.Add(ball);
+                this.game.activeMission.balls.Add(ball);
             }
         }
     }

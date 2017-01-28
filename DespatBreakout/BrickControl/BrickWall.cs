@@ -10,18 +10,16 @@
  * 
  * Design patterns: Observer
  ---------------------------------------------------------------------------------------------------------*/
-
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class BrickWall : Microsoft.Xna.Framework.DrawableGameComponent, IBrickObserver
     {
         public List<IBrick> wall;
@@ -67,10 +65,10 @@ namespace DespatBreakout
 
             base.Draw(gameTime);
         }
+
         public void BrickDestroyed(IBrick brick)
         {
             wall.Remove(brick);
         }
-
     }
 }

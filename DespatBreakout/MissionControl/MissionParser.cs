@@ -30,8 +30,8 @@ namespace DespatBreakout
 
         public BrickWall CreateMission(XmlDocument scenario)
         {
-            wall = new List<IBrick> { };
-            bWall = new BrickWall(game);
+            this.wall = new List<IBrick> { };
+            this.bWall = new BrickWall(this.game);
             string texture;
             int x, y;
 
@@ -41,32 +41,32 @@ namespace DespatBreakout
                 x = Int32.Parse(node.Attributes["x"].InnerText);
                 y = Int32.Parse(node.Attributes["y"].InnerText);
                 IBrick brick;
-                if(node.Attributes["imported"] != null)
+                if (node.Attributes["imported"] != null)
                     if (Int32.Parse(node.Attributes["imported"].InnerText) == 1)
-                            brick = new BrickImportedAdapter(game);
+                        brick = new BrickImportedAdapter(this.game);
                     else brick = new Brick(game);
                 else brick = new Brick(game);
 
                 brick.Initialize(texture, x, y);
-                brick.Subscribe(bWall);
-                brick.Subscribe(game.achievements);
+                brick.Subscribe(this.bWall);
+                brick.Subscribe(this.game.achievements);
 
-                if(node.Attributes["hardness"] != null)
+                if (node.Attributes["hardness"] != null)
                 brick = new BrickHard(brick, Int32.Parse(node.Attributes["hardness"].InnerText));
 
                 if (node.Attributes["invisible"] != null)
-                if(Int32.Parse(node.Attributes["invisible"].InnerText) == 1)   
+                if (Int32.Parse(node.Attributes["invisible"].InnerText) == 1)   
                     brick = new BrickInvisible(brick);
 
                 if (node.Attributes["bonus"] != null)
                     if (Int32.Parse(node.Attributes["bonus"].InnerText) == 1)
                         brick = new BrickBonus(brick);
 
-                wall.Add(brick);
+                this.wall.Add(brick);
             }
 
-            bWall.Initialize(wall);
-            return bWall;
+            this.bWall.Initialize(this.wall);
+            return this.bWall;
         }
     }
 }

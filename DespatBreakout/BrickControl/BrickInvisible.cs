@@ -7,17 +7,15 @@
  * 
  * Design patterns: Decorator
  ---------------------------------------------------------------------------------------------------------*/
-
-
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+
     class BrickInvisible : IBrick
     {
         public bool visible;
@@ -26,58 +24,57 @@ namespace DespatBreakout
         
         public BrickInvisible(IBrick brick)
         {
-            baseBrick = brick;
-            visible = false;
+            this.baseBrick = brick;
+            this.visible = false;
         }
 
         public void Destroy(IBrick brick)
         {
-            baseBrick.Destroy(brick);
+            this.baseBrick.Destroy(brick);
         }
 
         public void Hit(IBrick brick)
         {
-            baseBrick.Hit(brick);
-            visible = true;
+            this.baseBrick.Hit(brick);
+            this.visible = true;
         }
 
         public void Subscribe(IBrickObserver observer)
         {
-            baseBrick.Subscribe(observer);
+            this.baseBrick.Subscribe(observer);
         }
 
         public void Unsubscribe(IBrickObserver observer)
         {
-            baseBrick.Unsubscribe(observer);
+            this.baseBrick.Unsubscribe(observer);
         }
 
         public void LoadContent()
         {
-            baseBrick.LoadContent();
+            this.baseBrick.LoadContent();
         }
 
         public void Initialize(string textureName, int x, int y)
         {
-            baseBrick.Initialize(textureName, x, y);
+            this.baseBrick.Initialize(textureName, x, y);
         }
 
         public void Update(GameTime gameTime)
         {
-            baseBrick.Update(gameTime);
+            this.baseBrick.Update(gameTime);
         }
 
         public Rectangle GetDestinationRectangle()
         {
-            return baseBrick.GetDestinationRectangle();
+            return this.baseBrick.GetDestinationRectangle();
         }
 
         public void Draw(GameTime gameTime)
         {
-            if (visible == true)
+            if (this.visible == true)
             {
-                baseBrick.Draw(gameTime);
+                this.baseBrick.Draw(gameTime);
             }
         }
-
     }
 }

@@ -51,7 +51,7 @@ namespace DespatBreakout
             string besttime;
             int height = 80;
 
-            if(game.missionSave.saved == true)
+            if (game.missionSave.saved == true)
             {
                 text = "Continue saved game";
                 ButtonMission button = new ButtonMission(game, DespatBreakout.GameState.Mission, game.missionSave);
@@ -145,7 +145,7 @@ namespace DespatBreakout
         {
             spriteBatch.Begin();
 
-            if(indexStart > 0)
+            if (indexStart > 0)
                 spriteBatch.Draw(game.buttonTextures.textureSheet, arrowUpDestination, arrowUpSource, Color.White);
                 
             for (int i = indexStart; i <= indexEnd; i++)
@@ -159,6 +159,5 @@ namespace DespatBreakout
 
             spriteBatch.End();
         }
-
     }
 }

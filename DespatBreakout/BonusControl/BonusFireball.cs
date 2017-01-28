@@ -8,16 +8,15 @@
  * 
  * Design patterns: Command
  ---------------------------------------------------------------------------------------------------------*/
-
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+
     class BonusFireball : Bonus
     {
         public BonusFireball(DespatBreakout game, Paddle player) : base(game, player)
@@ -25,6 +24,7 @@ namespace DespatBreakout
             this.player = player;
             this.game = game;
         }
+
         public override void CollectBonus()
         {
             game.activeMission.BonusCollected(this);

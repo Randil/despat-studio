@@ -8,15 +8,14 @@
  * 
  * Design patterns: Command
  ---------------------------------------------------------------------------------------------------------*/
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     class BonusSmallPaddle : Bonus
     {
         public BonusSmallPaddle(DespatBreakout game, Paddle player) : base(game, player)
@@ -24,11 +23,11 @@ namespace DespatBreakout
             this.player = player;
             this.game = game;
         }
+
         public override void CollectBonus()
         {
             game.activeMission.BonusCollected(this);
             game.activeMission.bonusEffects.Add(new BonusCommandSmallPaddle(game, player));
         }
-
     }
 }

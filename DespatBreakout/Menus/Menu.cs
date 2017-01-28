@@ -6,26 +6,26 @@
  * 
  * Design patterns: 
  ---------------------------------------------------------------------------------------------------------*/
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+
     class Menu : Microsoft.Xna.Framework.DrawableGameComponent
     { 
         public List<Button> buttons = new List<Button> { };
         public SpriteFont menuFont;
-        private DespatBreakout game;
-        SpriteBatch spriteBatch;
         public Button activeButton;
         public int activeButtonIndex = 0;
+
+        DespatBreakout game;
+        SpriteBatch spriteBatch;
 
         public Menu(DespatBreakout game) : base(game)
         {
@@ -74,7 +74,7 @@ namespace DespatBreakout
         {
             spriteBatch.Begin();
 
-            foreach(Button b in buttons)
+            foreach (Button b in buttons)
             {
                 b.Draw(gameTime);
             }

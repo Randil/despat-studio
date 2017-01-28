@@ -6,17 +6,15 @@
  * 
  * Design patterns: Adapter, Decorator, Observer
  ---------------------------------------------------------------------------------------------------------*/
-
-
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+
     class BrickImportedAdapter : IBrick
     {
         BrickImported baseBrick;
@@ -26,11 +24,12 @@ namespace DespatBreakout
         public BrickImportedAdapter(DespatBreakout game)
         {
             this.game = game;
-            baseBrick = new BrickImported(game);
+            this.baseBrick = new BrickImported(game);
         }
+
         public void Destroy(IBrick brick)
         {
-            foreach (IBrickObserver o in observers)
+            foreach (IBrickObserver o in this.observers)
                 o.BrickDestroyed(brick);
 
             // TODO: Visual or sound effect?
@@ -38,44 +37,50 @@ namespace DespatBreakout
 
         public void Hit(IBrick brick)
         {
-            baseBrick.HitByBall();
-                if (baseBrick.RemainingHits == 0)
+            this.baseBrick.HitByBall();
+            if (this.baseBrick.RemainingHits == 0)
             brick.Destroy(brick);
         }
+
         public void Subscribe(IBrickObserver observer)
         {
-            observers.Add(observer);
+            this.observers.Add(observer);
         }
 
         public void Unsubscribe(IBrickObserver observer)
         {
-            observers.Remove(observer);
+            this.observers.Remove(observer);
         }
+
         public void LoadContent()
         {
-            BrickImported.LoadTextures(game);
+            BrickImported.LoadTextures(this.game);
         }
+
         public void Initialize(string textureName, int x, int y)
         {
-            LoadContent();
-            baseBrick.Position = new Vector2(x, y);
-            baseBrick.Size = new Vector2(100, 40);
-            baseBrick.UpdateDrawingRectangles(new Rectangle(0, 0, 100, 100));
-            baseBrick.Color = Color.White;
-            baseBrick.Reset();
-            observers = new List<IBrickObserver> { };
+            this.LoadContent();
+            this.baseBrick.Position = new Vector2(x, y);
+            this.baseBrick.Size = new Vector2(100, 40);
+            this.baseBrick.UpdateDrawingRectangles(new Rectangle(0, 0, 100, 100));
+            this.baseBrick.Color = Color.White;
+            this.baseBrick.Reset();
+            this.observers = new List<IBrickObserver> { };
         }
+
         public void Update(GameTime gameTime)
         {
-            baseBrick.Update(gameTime);
+            this.baseBrick.Update(gameTime);
         }
+
         public Rectangle GetDestinationRectangle()
         {
-            return baseBrick.mDrawingRectangle;
+            return this.baseBrick.mDrawingRectangle;
         }
+
         public void Draw(GameTime gameTime)
         {
-             baseBrick.Draw(gameTime);
+            this.baseBrick.Draw(gameTime);
         }
     }
 }

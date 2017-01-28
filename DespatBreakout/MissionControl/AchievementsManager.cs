@@ -25,25 +25,25 @@ namespace DespatBreakout
 
         XmlDocument achievementsXML; 
 
-        public AchievementsManager (XmlDocument achievementsXML)
+        public AchievementsManager(XmlDocument achievementsXML)
         {
             this.achievementsXML = achievementsXML;
 
             XmlNode missionsFinishedNode = achievementsXML.SelectSingleNode("descendant::missionsFinished");
-            missionsFinished = Int32.Parse(missionsFinishedNode.Attributes["number"].InnerText);
+            this.missionsFinished = Int32.Parse(missionsFinishedNode.Attributes["number"].InnerText);
 
             XmlNode bricksDestroyedNode = achievementsXML.SelectSingleNode("descendant::bricksDestroyed");
-            bricksDestroyed = Int32.Parse(bricksDestroyedNode.Attributes["number"].InnerText);
+            this.bricksDestroyed = Int32.Parse(bricksDestroyedNode.Attributes["number"].InnerText);
         }
 
         public void BrickDestroyed(IBrick brick)
         {
-            bricksDestroyed++;
+            this.bricksDestroyed++;
         }
 
         public void MissionFinished(double time)
         {
-            missionsFinished++;
+            this.missionsFinished++;
         }
 
         public void SaveAchievements()

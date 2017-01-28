@@ -44,8 +44,8 @@ namespace DespatBreakout
 
         public override void Update(GameTime gameTime)
         {
-            destinationRectangle.X = (int) x;
-            destinationRectangle.Y = (int) y;
+            destinationRectangle.X = (int)x;
+            destinationRectangle.Y = (int)y;
             steering.Update(gameTime);
         }
 

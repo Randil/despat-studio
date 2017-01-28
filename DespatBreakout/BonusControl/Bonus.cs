@@ -7,17 +7,16 @@
  * 
  * Design patterns: 
  ---------------------------------------------------------------------------------------------------------*/
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DespatBreakout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class Bonus : Microsoft.Xna.Framework.DrawableGameComponent
     {
         public Paddle player;
@@ -31,7 +30,7 @@ namespace DespatBreakout
         float x, y;
         string textureName;
         float ySpeed = 200f;
-        float delta; //Time passed between the frames
+        float delta; // Time passed between the frames
 
         public Bonus(DespatBreakout game, Paddle player) : base(game)
         {
@@ -92,7 +91,5 @@ namespace DespatBreakout
         {
             previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
         }
-
-
     }
 }
