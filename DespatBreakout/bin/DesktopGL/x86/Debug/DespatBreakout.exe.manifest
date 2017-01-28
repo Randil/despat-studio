@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DespatBreakout.exe" size="334232">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DespatBreakout.exe" size="334744">
       <assemblyIdentity name="DespatBreakout" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>uOw2PQWc6YUAt3wDca68199R9tn9ks3n43XSkakmEA4=</dsig:DigestValue>
+        <dsig:DigestValue>ODuHNBaQnaozNI6QR49Nw8M6ddeelXVxD++IazRP0zM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

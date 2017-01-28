@@ -115,7 +115,7 @@ namespace DespatBreakout
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            
+
             foreach (Ball b in balls)
             b.Draw(gameTime);
 
