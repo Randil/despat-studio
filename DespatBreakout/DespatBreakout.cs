@@ -23,16 +23,10 @@ using System;
 using System.Xml;
 
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class DespatBreakout : Game
     {
-        private static DespatBreakout instance;
-
-        GraphicsDeviceManager graphics;
-        MenuMain menu;
-        MenuMissions missionsMenu;
-
         public SpriteBatch spriteBatch;
 
         public XmlDocument buttonTexturesXML = new XmlDocument();
@@ -52,6 +46,12 @@ namespace DespatShooter
         public XmlDocument achievementsXML = new XmlDocument();
         public Random rand = new Random();
         public GameState currentGameState = GameState.MainMenu;
+
+        private static DespatBreakout instance;
+
+        GraphicsDeviceManager graphics;
+        MenuMain menu;
+        MenuMissions missionsMenu;
 
         private DespatBreakout()
         {
@@ -119,9 +119,12 @@ namespace DespatShooter
         protected override void Update(GameTime gameTime)
         {
             currentGameTime = gameTime;
+
+            //At ay given time pressing esc will result in returning to main menu
+            //If game was on run while doing this, its state will be saved
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                if (currentGameState == GameState.Mission)
+                if (currentGameState == GameState.Mission && activeMission.finished == false)
                 {
                     missionSave.SaveMissionState(activeMission);
                     missionsMenu = new MenuMissions(this);

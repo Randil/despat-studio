@@ -16,11 +16,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     class MenuMain : Menu
     {
-        private DespatBreakout game;
+        DespatBreakout game;
         SpriteBatch spriteBatch;
 
         public MenuMain(DespatBreakout game) : base(game)

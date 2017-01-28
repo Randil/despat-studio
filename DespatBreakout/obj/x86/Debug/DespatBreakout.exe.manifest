@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DespatBreakout.exe" size="333208">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DespatBreakout.exe" size="334232">
       <assemblyIdentity name="DespatBreakout" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZCHq9y5aGA0LUMQbXGMUr+C6t8Zcuwv+m1Uj9kswGAs=</dsig:DigestValue>
+        <dsig:DigestValue>uOw2PQWc6YUAt3wDca68199R9tn9ks3n43XSkakmEA4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -99,13 +99,13 @@
       <dsig:DigestValue>bP3q+NArdd1z1koYUdZUAlmNFYDqZg/28y4gDYSNK4Y=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Fonts\MainMenu.xnb" size="37908">
+  <file name="Content\Fonts\MainMenu.xnb" size="136212">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>TT3y/oJIzBBTJAunXahE0c0Lyq2xeDtYZfIE4kpA2lk=</dsig:DigestValue>
+      <dsig:DigestValue>p/HIW7ftrQ6CvNZclOCV4TU2D5Mo6+1/izDXTTOTSgo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Graphics\assets.png" size="42299">

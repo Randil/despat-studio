@@ -8,7 +8,6 @@ C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\OpenTK.dll.config
 C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll
 C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\NVorbis.dll
 C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\OpenTK.dll
-C:\Inżynierka\DespatBreakout\obj\x86\Debug\DespatBreakout.csprojResolveAssemblyReference.cache
 C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\DespatBreakout.exe.config
 C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\DespatBreakout.exe
 C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\DespatBreakout.pdb
@@ -18,3 +17,4 @@ C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\DespatBreakout.exe.manifes
 C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\DespatBreakout.application
 C:\Inżynierka\DespatBreakout\obj\x86\Debug\DespatBreakout.exe.manifest
 C:\Inżynierka\DespatBreakout\obj\x86\Debug\DespatBreakout.application
+C:\Inżynierka\DespatBreakout\obj\x86\Debug\DespatBreakout.csprojResolveAssemblyReference.cache

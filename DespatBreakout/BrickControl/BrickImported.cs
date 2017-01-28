@@ -23,7 +23,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class BrickImported : DrawableGameComponent
     {
@@ -99,7 +99,6 @@ namespace DespatShooter
         /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
-
             if (!this.IsAlive)
                 return;
 

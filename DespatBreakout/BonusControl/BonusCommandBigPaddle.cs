@@ -13,12 +13,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     class BonusCommandBigPaddle : IBonusCommand
     {
         DespatBreakout game;
         Paddle player;
+
         public BonusCommandBigPaddle(DespatBreakout game, Paddle player)
         {
             this.player = player;

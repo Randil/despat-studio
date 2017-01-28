@@ -15,13 +15,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     class BrickBonus : IBrick
     {
-
         IBrick baseBrick;
-
 
         public BrickBonus(IBrick brick)
         {

@@ -16,20 +16,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class Bonus : Microsoft.Xna.Framework.DrawableGameComponent
     {
         public Paddle player;
         public DespatBreakout game;
-        float x, y;
+
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
+
         SpriteBatch spriteBatch;
         GameTime previousGameTime;
+        float x, y;
         string textureName;
         float ySpeed = 200f;
-        float delta;
+        float delta; //Time passed between the frames
 
         public Bonus(DespatBreakout game, Paddle player) : base(game)
         {
@@ -39,7 +41,6 @@ namespace DespatShooter
 
         public virtual void CollectBonus()
         {
-
         }
 
         public new void LoadContent()

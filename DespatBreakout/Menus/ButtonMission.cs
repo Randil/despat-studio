@@ -1,4 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* --------------------------------------------------------------------------------------------------------
+ * Author: Dominik Szczechla
+ * Date: 16/01/2016
+ * 
+ * This class is a button extension that represents a button in MissionMenu
+ * 
+ * Design patterns: 
+ ---------------------------------------------------------------------------------------------------------*/
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -7,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     class ButtonMission : Button
     {
@@ -34,11 +43,16 @@ namespace DespatShooter
         public override void Click()
         {
             if (parsedMission != null)
-                {
-                    DespatBreakout.Instance.activeMission.Initialize(parsedMission);
-                    DespatBreakout.Instance.currentGameState = DespatBreakout.GameState.Mission;
-                }
-            else DespatBreakout.Instance.missionParser.CreateMission(missionScenario);
+            {
+                DespatBreakout.Instance.activeMission.Initialize(parsedMission);
+                DespatBreakout.Instance.currentGameState = DespatBreakout.GameState.Mission;
+            }
+            else
+            {
+                DespatBreakout.Instance.activeMission.
+                Initialize(DespatBreakout.Instance.missionParser.CreateMission(missionScenario));
+                DespatBreakout.Instance.currentGameState = DespatBreakout.GameState.Mission;
+            }
         }
     }
 }

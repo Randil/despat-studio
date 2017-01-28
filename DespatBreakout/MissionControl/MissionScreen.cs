@@ -7,7 +7,7 @@
  * MissionScreen can be initialized via a MissionSave object or only with a BrickWall (then it sets default values for other components).
  * 
  * 
- * Design patterns: Memento, Command
+ * Design patterns: Memento, Command, Factory
  ---------------------------------------------------------------------------------------------------------*/
 
 using Microsoft.Xna.Framework;
@@ -18,17 +18,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class MissionScreen : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        private DespatBreakout game;
-        SpriteBatch spriteBatch;
-        bool onGoing;
-        bool finished;
-        double delay;
-        MissionFinishedScreen finishScreen;
-        MissionFinishedProxy finishedProxy;
+        //MissionScreen is using an external initializer, so its fields have to be public
+        public DespatBreakout game;
+        public SpriteBatch spriteBatch;
+        public bool onGoing;
+        public bool finished;
+        public double delay;
+        public MissionFinishedScreen finishScreen;
+        public MissionFinishedProxy finishedProxy;
         
         public GameTime startTime;
         public double time;
@@ -37,95 +38,36 @@ namespace DespatShooter
         public BrickWall bricks;
 
         public List<Ball> balls;
-        List<Ball> ballsToRemove;
+        public List<Ball> ballsToRemove;
         public List<Bonus> bonuses;
-        List<Bonus> bonusesToRemove;
+        public  List<Bonus> bonusesToRemove;
         public List<IBonusCommand> bonusEffects;
-        List<IBonusCommand> bonusEffectsToRemove;
+        public List<IBonusCommand> bonusEffectsToRemove;
+
+        MissionScreenInitializer initializer;
 
         public MissionScreen(DespatBreakout game) : base(game)
         {
             this.game = game;
+            this.initializer = new MissionScreenInitializer(this);
         }
 
-           protected override void LoadContent()
+        protected override void LoadContent()
         {
             base.LoadContent();
         }
 
         public void Initialize(BrickWall bWall)
-        {          
+        {
             LoadContent();
-            spriteBatch = new SpriteBatch(game.GraphicsDevice);
-            onGoing = false;
-            finished = false;
-
-            this.bricks = bWall;
-
-            player = new Paddle(game);
-            player.Initialize("paddle_medium.png",
-                (game.GraphicsDevice.Viewport.Width - game.gameTextures.GetTextureRectangle("paddle_medium.png").Width) / 2,
-                game.GraphicsDevice.Viewport.Height - 50);
-
-
-            Ball ball = new Ball(game);
-            IBallCollisionStrategy collisionStrategy = new StrategyNormal(bricks, ball, player);
-
-            ball.Initialize("ball_normal.png", collisionStrategy,
-                (game.GraphicsDevice.Viewport.Width - game.gameTextures.GetTextureRectangle("ball_normal.png").Width) / 2,
-                 game.GraphicsDevice.Viewport.Height - 50 - game.gameTextures.GetTextureRectangle("ball_normal.png").Height,
-                 0f, -500f);
-
-            balls = new List<Ball> {ball};
-            ballsToRemove = new List<Ball> {};
-            bonuses = new List<Bonus> { };
-            bonusesToRemove = new List<Bonus> { };
-            bonusEffects = new List<IBonusCommand> { };
-            bonusEffectsToRemove = new List<IBonusCommand> { };
-
-            startTime = new GameTime();
-            delay = 1.5d;
-            finishScreen = new MissionFinishedScreen(game);
-            finishedProxy = new MissionFinishedProxy();
+            initializer.Initialize(bWall);
             base.Initialize();
         }
 
         public void Initialize(MissionSave save)
         {
             LoadContent();
-            spriteBatch = new SpriteBatch(game.GraphicsDevice);
-            onGoing = true;
-            finished = false;
-
-            this.bricks = save.bricks;
-
-            player = new Paddle(game);
-            player.Initialize(save.playerTexture, save.playerX, save.playerY);
-
-            balls = new List<Ball> { };
-
-            foreach(MissionSave.BallState ballState in save.balls)
-            {
-                IBallCollisionStrategy collisionStrategy;
-                Ball ball = new Ball(game);
-                if (ballState.textureName.Equals("ball_big.png"))
-                    collisionStrategy = new StrategyFireball(bricks, ball, player);
-                else collisionStrategy = new StrategyNormal(bricks, ball, player);
-                ball.Initialize(ballState.textureName, collisionStrategy, (int)ballState.x, (int)ballState.y, ballState.xSpeed, ballState.ySpeed);
-                balls.Add(ball);
-            }
-           
-            ballsToRemove = new List<Ball> { };
-            bonuses = save.bonuses;
-            bonusesToRemove = new List<Bonus> { };
-            bonusEffects = save.bonusEffects;
-            bonusEffectsToRemove = new List<IBonusCommand> { };
-
-            startTime = save.startTime;
-            time = save.timePlayed;
-            delay = time + 1.5d;
-            finishScreen = new MissionFinishedScreen(game);
-            finishedProxy = new MissionFinishedProxy();
+            initializer.Initialize(save);
             base.Initialize();
         }
 

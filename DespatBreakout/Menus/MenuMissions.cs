@@ -3,9 +3,9 @@
  * Date: 16/01/2016
  * 
  * This class menu of choosing mission. It is parsing XML with level list, and prepares buttons according to it.
- * Oprionally if a saved game exists, it adds aditional button to continue the mission.
+ * Optionally if a saved game exists, it adds aditional button to continue the mission.
  * 
- * Design patterns: Factory, Memento
+ * Design patterns: Memento
  ---------------------------------------------------------------------------------------------------------*/
 
 
@@ -19,15 +19,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     class MenuMissions : Menu
     {
-        private DespatBreakout game;
-        SpriteBatch spriteBatch;
-        public XmlDocument missionsXML;
         public int indexStart = 0;
         public int indexEnd;
+        public XmlDocument missionsXML;
+
+        DespatBreakout game;
+        SpriteBatch spriteBatch;
         Rectangle arrowUpSource;
         Rectangle arrowUpDestination;
         Rectangle arrowDownSource;
@@ -38,6 +39,9 @@ namespace DespatShooter
             this.game = game;
         }
 
+        /// <summary>
+        /// This could also be done with an external factory, as in MissionScreen - MissionParser
+        /// </summary>
         public void Initialize(XmlDocument missionsXML)
         {
             LoadContent();
@@ -51,7 +55,7 @@ namespace DespatShooter
             {
                 text = "Continue saved game";
                 ButtonMission button = new ButtonMission(game, DespatBreakout.GameState.Mission, game.missionSave);
-                button.Initialize(menuFont, 150, height, text, "grey_button15.png");
+                button.Initialize(menuFont, 300, height, text, "grey_button15.png");
                 height += 70;
                 buttons.Add(button);
             }
@@ -64,7 +68,7 @@ namespace DespatShooter
                 XmlDocument scenarioXML = new XmlDocument();
                 scenarioXML.Load("..\\..\\..\\..\\Content\\Levels\\" + filename);
                 ButtonMission button = new ButtonMission(game, DespatBreakout.GameState.Mission, scenarioXML);
-                button.Initialize(menuFont, 150, height, text, "grey_button15.png");
+                button.Initialize(menuFont, 300, height, text, "grey_button15.png");
                 height += 70;
                 buttons.Add(button);
             }
@@ -77,9 +81,9 @@ namespace DespatShooter
             activeButton.isHoovered = true;
 
             arrowUpSource = game.buttonTextures.GetTextureRectangle("grey_sliderUp.png");
-            arrowUpDestination = new Rectangle(231, 30, arrowUpSource.Width, arrowUpSource.Height);
+            arrowUpDestination = new Rectangle(381, 30, arrowUpSource.Width, arrowUpSource.Height);
             arrowDownSource = game.buttonTextures.GetTextureRectangle("grey_sliderDown.png");
-            arrowDownDestination = new Rectangle(231, 420, arrowDownSource.Width, arrowDownSource.Height);
+            arrowDownDestination = new Rectangle(381, 420, arrowDownSource.Width, arrowDownSource.Height);
 
             base.Initialize();
         }

@@ -16,11 +16,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     class BrickHard : IBrick
     {
-
         IBrick baseBrick;
         public int health;
 

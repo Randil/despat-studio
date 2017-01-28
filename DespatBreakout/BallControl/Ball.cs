@@ -18,24 +18,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class Ball : Microsoft.Xna.Framework.DrawableGameComponent
     {
-
         public float x, y;
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
         public string textureName;
-        DespatBreakout game;
-        SpriteBatch spriteBatch;
-        GameTime previousGameTime;
-        int delta;
         public IBallCollisionStrategy collisionStrategy;
 
         public float xSpeed;
         public float ySpeed;
         public float maxSpeed = 500f;
+
+        DespatBreakout game;
+        SpriteBatch spriteBatch;
+        GameTime previousGameTime;
+        int delta; //Time passed between the frames
+
 
           public Ball(DespatBreakout game) : base(game)
         {
@@ -52,6 +53,9 @@ namespace DespatShooter
             game.activeMission.BallFalled(this);
         }
 
+        /// <summary>
+        /// Duplicate() returns an exact copy of the ball on which method was called.
+        /// </summary>
         public Ball Duplicate()
         {
             Ball ball = new Ball(game);
@@ -70,7 +74,6 @@ namespace DespatShooter
 
            public void Initialize(string textureName, IBallCollisionStrategy collisionStrategy, int x, int y, float xSpeed, float ySpeed)
         {
-
             LoadContent();
             this.x = x;
             this.y = y;
@@ -88,7 +91,6 @@ namespace DespatShooter
 
         public override void Update(GameTime gameTime)
         {
-
             delta = gameTime.TotalGameTime.Milliseconds - previousGameTime.TotalGameTime.Milliseconds;
             previousGameTime = new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime);
 

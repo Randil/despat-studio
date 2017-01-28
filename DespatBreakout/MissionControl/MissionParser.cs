@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class MissionParser
     {
@@ -28,7 +28,7 @@ namespace DespatShooter
             this.game = game;
         }
 
-        public void CreateMission(XmlDocument scenario)
+        public BrickWall CreateMission(XmlDocument scenario)
         {
             wall = new List<IBrick> { };
             bWall = new BrickWall(game);
@@ -66,9 +66,7 @@ namespace DespatShooter
             }
 
             bWall.Initialize(wall);
-            game.activeMission.Initialize(bWall);
-            game.currentGameState = DespatBreakout.GameState.Mission;
-
+            return bWall;
         }
     }
 }

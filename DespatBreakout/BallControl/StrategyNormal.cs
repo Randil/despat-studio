@@ -14,13 +14,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class StrategyNormal : IBallCollisionStrategy
     {
         public Ball ball;
         public BrickWall bricks;
         public Paddle player;
+
         bool justReflected = false; 
         bool intersectionOccured = false;
 
@@ -57,6 +58,7 @@ namespace DespatShooter
                        else if (ball.destinationRectangle.Bottom >= b.GetDestinationRectangle().Top)
                        { CalculateReflectionBrick(Ball.HitSide.top, b); }
                    }
+
                    if (justReflected == true)
                    {
                        b.Hit(b);

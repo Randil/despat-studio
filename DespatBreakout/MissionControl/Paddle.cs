@@ -11,18 +11,18 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class Paddle : Microsoft.Xna.Framework.DrawableGameComponent
     {
         public DespatBreakout game;
-        SpriteBatch spriteBatch;
         public String texture;
         public float x, y;
         public float movementSpeed = 500.0f;
         public Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
 
+        SpriteBatch spriteBatch;
         //Steering component for player paddle
         PaddleSteering steering;
 

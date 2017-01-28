@@ -14,14 +14,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     class StrategyFireball : IBallCollisionStrategy
     {
         public Ball ball;
         public BrickWall bricks;
-        List<IBrick> bricksToDestroy;
         public Paddle player;
+
+        List<IBrick> bricksToDestroy;
         bool justReflected = false; 
 
         public StrategyFireball(BrickWall bricks, Ball ball, Paddle player)
@@ -41,6 +42,7 @@ namespace DespatShooter
                    bricksToDestroy.Add(b);
                }
            }
+
            foreach (IBrick b in bricksToDestroy)
                 b.Destroy(b);
 
@@ -63,9 +65,11 @@ namespace DespatShooter
         public void CalculateReflectionBrick(Ball.HitSide hitSide, IBrick brick)
         {
             justReflected = true;
-            // Notice that effects depending on HitSide are reversed in comparison to CalculateReflectionWall
-            // Thats because the ball is INSIDE game screen and OUTSIDE all the bricks - TOP border of the game screen
-            // Should reflect the ball in the same way BOTTOM border of a brick does etc.
+            /// <remarks>
+            /// Notice that effects depending on HitSide are reversed in comparison to CalculateReflectionWall
+            /// Thats because the ball is INSIDE game screen and OUTSIDE all the bricks - TOP border of the game screen
+            /// Should reflect the ball in the same way BOTTOM border of a brick does etc.
+            /// </remarks>
             switch (hitSide)
             {
                 case Ball.HitSide.bottom:

@@ -20,11 +20,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class BrickWall : Microsoft.Xna.Framework.DrawableGameComponent, IBrickObserver
     {
         public List<IBrick> wall;
+
         DespatBreakout game;
         SpriteBatch spriteBatch;
 

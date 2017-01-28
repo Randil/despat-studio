@@ -2,7 +2,7 @@
  * Author: Dominik Szczechla
  * Date: 16/01/2016
  * 
- * This is a class representing generic Brick. It is fully functional, and serves as a base for brick decorators.
+ * This class represents a generic Brick. It is fully functional, and serves as a base for brick decorators.
  * Class contains definitions for drawing a brick, updating it after being hit or destroyed, handling subscribers interested
  * in information about brick (BrickWall containing the individual brick and AchievementManager).
  * 
@@ -17,13 +17,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class Brick : Microsoft.Xna.Framework.DrawableGameComponent, IBrick
     {
-        int x, y;
-        private Rectangle sourceRectangle;
         public Rectangle destinationRectangle;
+
+        int x, y;
+        Rectangle sourceRectangle;
         string textureName;
         DespatBreakout game;
         SpriteBatch spriteBatch;
@@ -65,7 +66,6 @@ namespace DespatShooter
 
            public void Initialize(string textureName, int x, int y)
         {
-
             LoadContent();
             this.x = x;
             this.y = y;

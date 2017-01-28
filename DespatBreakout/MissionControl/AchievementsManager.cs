@@ -3,7 +3,7 @@
  * Date: 16/01/2016
  * 
  * This class contains information about player achievements throughout the game. 
- * Class shows to approaches to tracking achievements: being an Observer of certain classes, and using  a logging Proxy.
+ * Class shows two approaches to tracking achievements: being an Observer of certain classes, and using a logging Proxy.
  * 
  * Design patterns: Proxy, Observer
  ---------------------------------------------------------------------------------------------------------*/
@@ -15,13 +15,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class AchievementsManager : IBrickObserver
     {
 
         public int missionsFinished;
         public int bricksDestroyed;
+
         XmlDocument achievementsXML; 
 
         public AchievementsManager (XmlDocument achievementsXML)
@@ -33,7 +34,6 @@ namespace DespatShooter
 
             XmlNode bricksDestroyedNode = achievementsXML.SelectSingleNode("descendant::bricksDestroyed");
             bricksDestroyed = Int32.Parse(bricksDestroyedNode.Attributes["number"].InnerText);
-
         }
 
         public void BrickDestroyed(IBrick brick)

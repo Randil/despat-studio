@@ -2,14 +2,15 @@
  * Author: Dominik Szczechla
  * Date: 16/01/2016
  * 
- * This is the main entry point for the application.
+ * This is the main entry point for the application. 
+ * It was written according to instructions from monogame documentation - see more at http://www.monogame.net/.
  * 
  * Design patterns:
  ---------------------------------------------------------------------------------------------------------*/
 
 using System;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public static class Program
     {

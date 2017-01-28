@@ -14,9 +14,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
-    class MissionFinishedProxy
+    public class MissionFinishedProxy
     {
         public MissionFinishedProxy()
         {

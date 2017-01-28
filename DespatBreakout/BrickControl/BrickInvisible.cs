@@ -16,12 +16,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     class BrickInvisible : IBrick
     {
-        IBrick baseBrick;
         public bool visible;
+
+        IBrick baseBrick;
         
         public BrickInvisible(IBrick brick)
         {

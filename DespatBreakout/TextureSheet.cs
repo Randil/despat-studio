@@ -5,7 +5,7 @@
  * This class is a parser of texture sheets from the form of XML into a list of texture coordinates. 
  * It allows multiple textures to be stored within the same file and accessed by their names.
  * 
- * Design patterns: Interpreter, Factory
+ * Design patterns: Interpreter
  ---------------------------------------------------------------------------------------------------------*/
 
 using Microsoft.Xna.Framework;
@@ -17,13 +17,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace DespatShooter
+namespace DespatBreakout
 {
     public class TextureSheet
     {
         public string basePath;
-        List<TextureSheetElement> textures;
         public Texture2D textureSheet;
+
+        List<TextureSheetElement> textures;
 
         public TextureSheet(XmlDocument textureAtlas)
         {
