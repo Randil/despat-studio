@@ -43,7 +43,7 @@ namespace DespatBreakout
             Ball ball = new Ball(this.mission.game);
             IBallCollisionStrategy collisionStrategy = new StrategyNormal(this.mission.bricks, ball, this.mission.player);
 
-            ball.Initialize("ball_normal.png", collisionStrategy,
+            ball.Initialize("ball_normal.png", collisionStrategy, 
                 (this.mission.game.GraphicsDevice.Viewport.Width - this.mission.game.gameTextures.GetTextureRectangle("ball_normal.png").Width) / 2,
                  this.mission.game.GraphicsDevice.Viewport.Height - 50 - this.mission.game.gameTextures.GetTextureRectangle("ball_normal.png").Height,
                  0f, -500f);

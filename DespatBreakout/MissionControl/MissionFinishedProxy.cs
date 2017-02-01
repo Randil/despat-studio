@@ -23,9 +23,9 @@ namespace DespatBreakout
 
         }
 
-        public void MissionFinished(double time, MissionFinishedScreen finishScreen, string text)
+        public void MissionFinished(double time, MissionFinishedScreen finishScreen, string text, bool result)
         {
-            DespatBreakout.Instance.achievements.MissionFinished(time);
+            DespatBreakout.Instance.achievements.MissionFinished(time, result);
             finishScreen.Initialize(time, text);
         }
                       

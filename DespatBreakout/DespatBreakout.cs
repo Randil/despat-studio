@@ -50,6 +50,8 @@ namespace DespatBreakout
         GraphicsDeviceManager graphics;
         MenuMain menu;
         MenuMissions missionsMenu;
+        TutorialScreen tutorialScreen;
+        AchievementsScreen achievementsScreen;
 
         private DespatBreakout()
         {
@@ -88,12 +90,16 @@ namespace DespatBreakout
             
             buttonTextures = new TextureSheet(buttonTexturesXML);
             gameTextures = new TextureSheet(gameTexturesXML);
-            achievements = new AchievementsManager(achievementsXML);
+            achievements = new AchievementsManager(achievementsXML, "..\\..\\..\\..\\Content\\achievements.xml");
 
             menu = new MenuMain(this);
             menu.Initialize();
             missionsMenu = new MenuMissions(this);
             missionsMenu.Initialize(missionsXML);
+            this.tutorialScreen = new TutorialScreen(this);
+            tutorialScreen.Initialize();
+            this.achievementsScreen = new AchievementsScreen(this);
+            achievementsScreen.Initialize(achievements);
         }
 
         /// LoadContent will be called once per game and is the place to load all of your content.
@@ -152,6 +158,16 @@ namespace DespatBreakout
                         activeMission.Update(gameTime);
                         break;
                     }
+                case GameState.Tutorial:
+                    {
+                        tutorialScreen.Update(gameTime);
+                        break;
+                    }
+                case GameState.Achievements:
+                    {
+                        achievementsScreen.Update(gameTime);
+                        break;
+                    }
                 default : Exit();
                     break;
             }
@@ -181,6 +197,16 @@ namespace DespatBreakout
                 case GameState.Mission:
                     {
                         activeMission.Draw(gameTime);
+                        break;
+                    }
+                case GameState.Tutorial:
+                    {
+                        tutorialScreen.Draw(gameTime);
+                        break;
+                    }
+                case GameState.Achievements:
+                    {
+                        achievementsScreen.Draw(gameTime);
                         break;
                     }
             }

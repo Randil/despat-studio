@@ -18,3 +18,4 @@ C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\DespatBreakout.application
 C:\Inżynierka\DespatBreakout\obj\x86\Debug\DespatBreakout.exe.manifest
 C:\Inżynierka\DespatBreakout\obj\x86\Debug\DespatBreakout.application
 C:\Inżynierka\DespatBreakout\obj\x86\Debug\DespatBreakout.csprojResolveAssemblyReference.cache
+C:\Inżynierka\DespatBreakout\bin\DesktopGL\x86\Debug\Content\Graphics\Tutorial.xnb

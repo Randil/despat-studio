@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DespatBreakout.exe" size="334744">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DespatBreakout.exe" size="336792">
       <assemblyIdentity name="DespatBreakout" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6VHtSm0lw96pIdsoC+Qtq5kHR8yAMxN8CW4mrlqS9g4=</dsig:DigestValue>
+        <dsig:DigestValue>K55fPV8RR4XRr3HX057ThNmbYY3ML7MaSr1qFAmpc3k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,13 +90,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Content\achievements.xml" size="142" writeableType="applicationData">
+  <file name="Content\achievements.xml" size="160" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>bP3q+NArdd1z1koYUdZUAlmNFYDqZg/28y4gDYSNK4Y=</dsig:DigestValue>
+      <dsig:DigestValue>WnoyArjRHYy/oIdvgqrHSiCls4VHG1bhmHQaRHYk2v8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Fonts\MainMenu.xnb" size="136212">
@@ -187,6 +187,24 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>1z6URLOph5/lhyStpLua39lIHoM1E8wcZAF1o3yJkck=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Graphics\Tutorial.jpg" size="120753">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>GiO0OPxxnVyX3x9XZq5MStMA+oauxzBrXFxXz8AaBBM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Graphics\Tutorial.xnb" size="1541209">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>OZSVHwC5hc+hC22Qf5GfVXzjHJYJ9kNVodMaJMLTuBI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Levels\level1.xml" size="1897" writeableType="applicationData">

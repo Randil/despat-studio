@@ -171,14 +171,14 @@ namespace DespatBreakout
         public void MissionSuccess()
         {
             finished = true;
-            finishedProxy.MissionFinished(time, finishScreen, "Congratulations, you have won!");
+            finishedProxy.MissionFinished(time, finishScreen, "Congratulations, you have won!", true);
             onGoing = false;
         }
 
         public void MissionFailed()
         {
             finished = true;
-            finishedProxy.MissionFinished(time, finishScreen, "You failed!");
+            finishedProxy.MissionFinished(time, finishScreen, "You failed!", false);
             onGoing = false;
         }
 

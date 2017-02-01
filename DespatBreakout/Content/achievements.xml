@@ -1,9 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  
-  <missionsFinished number ="0"/>
-  <bricksDestroyed number ="0"/>
-
-  
+  <missionsFinished number="0" />
+  <missionsFailed number="1" />
+  <bricksDestroyed number="3" />
 </root>
-
